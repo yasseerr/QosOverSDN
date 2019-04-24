@@ -1,0 +1,9 @@
+qml/junk.py
+
+\.vscode/
+
+script/__pycache__/
+
+*.autosave
+
+tempCodeRunnerFile\.py
