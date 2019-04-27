@@ -10,19 +10,19 @@ Item {
     Rectangle {
         id: bgrectangle
         height: 600
-        color: "#2d2130"
+        color: "#504064"
         anchors.fill: parent
     }
 
     Image {
         id: image
-        width: 100
+        width: 200
         height: width
         anchors.top: parent.top
         anchors.topMargin: 10
         anchors.horizontalCenter: parent.horizontalCenter
         fillMode: Image.PreserveAspectFit
-        source: "../assets/logo1.png"
+        source: "../assets/logo2.png"
     }
 
     ScrollView {
@@ -34,26 +34,26 @@ Item {
         contentHeight: childrenRect.height
         contentWidth: parent.width
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 10
+        anchors.bottomMargin: 0
         anchors.top: image.bottom
-        anchors.topMargin: parent.height/8
+        anchors.topMargin: 0
 
         Flow {
             id: flow1
             width: scrollView.width
             height: childrenRect.height
             MenuItem_Q{
-                title: "Network Controller"
-                subItems: ["connecter a un Network","Actualiser","deconnecter"]
+                title: "Topologio"
+                subItems: ["connecter a un Network","deconnecter"]
                 subItemsFunctions:[exit_from_item,exit_from_item,exit_from_item]
             }
             MenuItem_Q{
                 title: "Quality Of Service"
-                subItems: ["classification et markage","gestion du congestion","shaping and plocing"]
+                subItems: ["Classification and Markage","Policing","shaping","Gestion du congestion"]
                 subItemsFunctions:[exit_from_item,exit_from_item,exit_from_item]
             }
             MenuItem_Q{
-                title: "Topologie"
+                title: "AutoQos"
                 subItems: ["affichage","Actualiser"]
                 subItemsFunctions:[exit_from_item,exit_from_item]
             }
