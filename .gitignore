@@ -7,3 +7,7 @@ script/__pycache__/
 *.autosave
 
 tempCodeRunnerFile\.py
+
+build/
+
+__main__\.spec
