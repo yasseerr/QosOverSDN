@@ -3,11 +3,9 @@ qml/junk.py
 \.vscode/
 
 script/__pycache__/
+build/
+dist/
 
 *.autosave
 
 tempCodeRunnerFile\.py
-
-build/
-
-__main__\.spec

@@ -56,7 +56,7 @@ Item {
             id: toggleimage
             visible: element1.subItems.length>0
             width: height
-            height: titleelement.height/2
+            height: titleelement.height/3
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             anchors.rightMargin: 0
@@ -65,7 +65,7 @@ Item {
             transform: Rotation{
                 origin.x : toggleimage.width/2
                 origin.y : toggleimage.width/2
-                angle: element1.selected?0:180
+                angle: element1.selected?180:0
             }
         }
     }

@@ -27,11 +27,12 @@ Item {
 
     ScrollView {
         id: scrollView
+        clip :true
         anchors.right: parent.right
         anchors.rightMargin: 10
         anchors.left: parent.left
         anchors.leftMargin: 10
-        contentHeight: childrenRect.height
+        contentHeight: flow1.height
         contentWidth: parent.width
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0

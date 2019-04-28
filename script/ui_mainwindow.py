@@ -20,7 +20,7 @@ class Ui_Form(object):
         self.menuWidget.setMinimumSize(QtCore.QSize(300, 0))
         self.menuWidget.setMaximumSize(QtCore.QSize(300, 16777215))
         self.menuWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
-        self.menuWidget.setSource(QtCore.QUrl("file:///C:/Users/HP/Desktop/QosOverSDN/qml/menuQml.qml"))
+        self.menuWidget.setSource(QtCore.QUrl("qml/menuQml.qml"))
         self.menuWidget.setObjectName("menuWidget")
         self.horizontalLayout.addWidget(self.menuWidget)
         self.topologieView = QtWidgets.QGraphicsView(Form)
