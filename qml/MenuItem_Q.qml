@@ -12,7 +12,7 @@ Item {
     property var subItemsFunctions: []
     property string iconName: ""
     property var clickOpperation: function(){}
-    property bool selected: false
+    property bool selected: true
     Item {
         id: header1
         anchors.top: parent.top

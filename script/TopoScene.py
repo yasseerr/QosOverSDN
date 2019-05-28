@@ -10,7 +10,7 @@ class TopoScene(QGraphicsScene):
         super().__init__()
         self.bgImage = QImage("assets/bg_brush2.png")
         self.setBackgroundBrush(QBrush(self.bgImage))
-        self.setSceneRect(QRectF(0,0,600,600))
+        #self.setSceneRect(QRectF(0,0,600,600))
         #TODO initialise the items
         dev1 = DeviceItem("test")
         self.addItem(dev1)
