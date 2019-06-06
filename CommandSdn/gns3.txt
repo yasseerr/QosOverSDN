@@ -1,0 +1,7 @@
+#####################
+# Open V Switch #####
+#####################
+
+ovs-vsctl show :  show activ interfaces
+ovs-ofctl -O OpenFlow13 dump-ports br0 : to see the packets received
+ovs-ofctl -O OpenFlow13 dump-ports br0 : to see the flow table

@@ -1,7 +1,7 @@
 import os
 import sys
 
-#the comment 
+
 
 from PyQt5.QtCore import QUrl,Qt
 from PyQt5.QtWidgets import QApplication
