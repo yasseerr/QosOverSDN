@@ -28,10 +28,24 @@ class MainForm(QWidget):
         self.ui.menuWidget.rootContext().setContextProperty('mainForm',self)
         self.ui.topologieView.setRenderHint(QPainter.Antialiasing)
         self.drawTopologie()
+        #self.ui.controleWidget.setVisible(False)
+        self.ui.controleWidget.setSource(QUrl("qml/classification.qml"))
+        self.ui.topologieView.setVisible(False)
 
     @pyqtSlot()
     def exit_app(self):
         sys.exit()
+
+    @pyqtSlot()
+    def displayTopologie(self):
+        self.ui.controleWidget.setVisible(False)
+        self.ui.topologieView.setVisible(True)
+
+    @pyqtSlot()
+    def displayClassification(self):
+        self.ui.topologieView.setVisible(False)
+        self.ui.controleWidget.setVisible(True)
+
 
     @pyqtSlot()
     def drawTopologie(self):

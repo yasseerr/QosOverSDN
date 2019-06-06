@@ -46,12 +46,12 @@ Item {
             MenuItem_Q{
                 title: "Topologio"
                 subItems: ["connecter a un Network","deconnecter"]
-                subItemsFunctions:[exit_from_item,exit_from_item,exit_from_item]
+                subItemsFunctions:[displayTopologie,exit_from_item,exit_from_item]
             }
             MenuItem_Q{
                 title: "Quality Of Service"
                 subItems: ["Classification and Markage","Policing","shaping","Gestion du congestion"]
-                subItemsFunctions:[exit_from_item,exit_from_item,exit_from_item]
+                subItemsFunctions:[displayClassification,exit_from_item,exit_from_item]
             }
             MenuItem_Q{
                 title: "AutoQos"
@@ -67,6 +67,13 @@ Item {
     function exit_from_item(){
         mainForm.exit_app()
     }
+    function displayTopologie(){
+        mainForm.displayTopologie()
+    }
+    function displayClassification(){
+        mainForm.displayClassification()
+    }
+
 
 }
 

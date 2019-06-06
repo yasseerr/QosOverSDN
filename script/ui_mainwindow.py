@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/mainform.ui'
+# Form implementation generated from reading ui file 'c:\Users\HP\Desktop\QosOverSDN\ui\mainform.ui'
 #
-# Created by: PyQt5 UI code generator 5.9.2
+# Created by: PyQt5 UI code generator 5.12.2
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -14,7 +15,7 @@ class Ui_Form(object):
         Form.resize(1014, 671)
         self.horizontalLayout = QtWidgets.QHBoxLayout(Form)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout.setSpacing(1)
+        self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.menuWidget = QtQuickWidgets.QQuickWidget(Form)
         self.menuWidget.setMinimumSize(QtCore.QSize(300, 0))
@@ -26,6 +27,12 @@ class Ui_Form(object):
         self.topologieView = QtWidgets.QGraphicsView(Form)
         self.topologieView.setObjectName("topologieView")
         self.horizontalLayout.addWidget(self.topologieView)
+        self.controleWidget = QtQuickWidgets.QQuickWidget(Form)
+        self.controleWidget.setEnabled(True)
+        self.controleWidget.setStyleSheet("")
+        self.controleWidget.setResizeMode(QtQuickWidgets.QQuickWidget.SizeRootObjectToView)
+        self.controleWidget.setObjectName("controleWidget")
+        self.horizontalLayout.addWidget(self.controleWidget)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -34,14 +41,5 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
 
+
 from PyQt5 import QtQuickWidgets
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.setupUi(Form)
-    Form.show()
-    sys.exit(app.exec_())
-
