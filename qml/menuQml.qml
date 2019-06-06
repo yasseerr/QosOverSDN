@@ -73,8 +73,6 @@ Item {
     function displayClassification(){
         mainForm.displayClassification()
     }
-
-
 }
 
 

@@ -1,0 +1,21 @@
+---
+- name : class1
+  policies : 
+    - name : pol1
+    - name : pol2
+    - name : pol3
+- name : class2
+  policies : 
+    - name : pol1
+    - name : pol2
+    - name : pol3
+- name : class3
+  policies : 
+    - name : pol1
+    - name : pol2
+    - name : pol3
+- name : class4
+  policies : 
+    - name : pol1
+    - name : pol2
+    - name : pol3

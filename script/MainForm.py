@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys
-from PyQt5.QtCore import QUrl,pyqtSlot,Qt
+from PyQt5.QtCore import QUrl,pyqtSlot,Qt,pyqtProperty,pyqtSignal
 from PyQt5.QtWidgets import QWidget,QMainWindow
 from PyQt5 import QtQuick,QtCore
 from PyQt5.QtQml import QQmlContext
@@ -9,9 +9,11 @@ from PyQt5.QtGui import QPixmap,QBrush,QImage,QPainter
 from script.ui_mainwindow import Ui_Form
 from script.DeviceItem import DeviceItem
 from script.TopoScene import TopoScene
+from script.models.QosClassManager import QosClassManager
 
 import requests
 import json
+import random
 
 
 class MainForm(QWidget):
@@ -20,17 +22,33 @@ class MainForm(QWidget):
         "links":"//wm//topology//links//json"
     }
     controllerAdress = "http://192.168.60.130:8080"
+
+    color_enum = ["#f00","#0f0","#00f","#ff0"]
+
+    displayClasseSig = pyqtSignal(str,str,arguments=['name_p','color_p'])
+
     def __init__(self):
         QWidget.__init__(self)
         self.ui = Ui_Form()
         self.ui.setupUi(self)
         self.setWindowTitle("QosOnSdn")
+
+        self._classesManager = QosClassManager()
+
         self.ui.menuWidget.rootContext().setContextProperty('mainForm',self)
         self.ui.topologieView.setRenderHint(QPainter.Antialiasing)
         self.drawTopologie()
         #self.ui.controleWidget.setVisible(False)
+        self.ui.controleWidget.rootContext().setContextProperty('mainForm', self)
         self.ui.controleWidget.setSource(QUrl("qml/classification.qml"))
         self.ui.topologieView.setVisible(False)
+        #TODO create the classes manager
+        self.exportClasses()
+
+
+    def exportClasses(self):
+        for class_ob  in self._classesManager.classes.values():
+            self.displayClasseSig.emit(class_ob.name,random.choice(self.color_enum))
 
     @pyqtSlot()
     def exit_app(self):
@@ -93,6 +111,11 @@ class MainForm(QWidget):
         ret_obj = json.loads(trafic)
         print(ret_obj)
         return ret_obj
+    
+    @pyqtProperty(QosClassManager)
+    def classesManager(self):
+        return self._classesManager
+
 
 
 

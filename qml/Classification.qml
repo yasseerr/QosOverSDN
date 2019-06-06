@@ -82,22 +82,58 @@ Rectangle {
             anchors.fill: parent
         }
 
-        ScrollView {
-            id: classesScrollView
-            anchors.fill: parent
 
-            Flow {
-                id: classesFlow
-                width: classesScrollView.width - 5
-                height: childrenRect.height
-            }
-        }
 
         AddClassPupup{
             id : addClassPupup
             anchors.centerIn: parent
         }
 
+        GridView {
+            id: gridView
+            clip: true
+            anchors.fill: parent
+            anchors.margins: 10
+            delegate: Item {
+                id: element
+                x: 5
+                height: 100
+                width: 100
+
+                Rectangle {
+                    id : backgroundRect
+                    anchors.fill: parent
+                    color: colorCode
+                    opacity: 0.8
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+
+                Text {
+                    text: name
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    font.bold: true
+                }
+
+            }
+            model: ListModel {
+                id:classModel
+            }
+            cellHeight: 110
+            cellWidth: 110
+        }
+
+    }
+    /*TODO refresh classes list when created l*/
+    Component.onCompleted :{
+        console.log(mainForm.classesManager)
+    }
+    /*TODO */
+    Connections{
+        target: mainForm
+        onDisplayClasseSig:{
+            classModel.append({"name":name_p,"colorCode":color_p})
+        }
     }
 
 }
@@ -144,7 +180,20 @@ Rectangle {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /*##^## Designer {
     D{i:0;autoSize:true;height:480;width:640}D{i:8;anchors_height:200;anchors_width:200}
+D{i:10;anchors_height:140;anchors_width:140;anchors_x:0;anchors_y:0}
 }
  ##^##*/
