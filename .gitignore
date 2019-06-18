@@ -15,3 +15,5 @@ __main__\.spec
 qml/Interfaces/
 
 *.pyc
+
+script/models/__pycache__/

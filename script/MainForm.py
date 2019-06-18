@@ -7,10 +7,12 @@ from PyQt5.QtQml import QQmlContext
 from PyQt5.QtGui import QPixmap,QBrush,QImage,QPainter
 
 from script.ui_mainwindow import Ui_Form
+from script.TopoDialog import TopoDialog
 from script.DeviceItem import DeviceItem
 from script.TopoScene import TopoScene
 from script.models.QosClassManager import QosClassManager
 from script.models.QosClassModel import QosClassModel,QosClass
+
 
 import requests
 import json
@@ -46,8 +48,9 @@ class MainForm(QWidget):
         self.ui.controleWidget.rootContext().setContextProperty('classesModel', self._classesModel)
         self.ui.controleWidget.setSource(QUrl("qml/classification.qml"))
         self.ui.topologieView.setVisible(False)
-        #TODO create the classes manager
-        self.exportClasses()
+        
+        self.topologyDialog = TopoDialog()
+        
 
 
 
@@ -74,6 +77,12 @@ class MainForm(QWidget):
         #TODO create the devices and links
         self.topoScene.createDevices(linksArr)
         #TODO add the items to the library
+    
+    @pyqtSlot()
+    def showTopoDialogue(self):
+        self.topologyDialog.show()
+
+
 
     def getObjectFromController(self,opperation:str):
         #result = requests.get((self.controllerAdress+self.floodLightRequests[opperation]))

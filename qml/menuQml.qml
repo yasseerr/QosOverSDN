@@ -45,8 +45,8 @@ Item {
             height: childrenRect.height
             MenuItem_Q{
                 title: "Topologio"
-                subItems: ["connecter a un Network","deconnecter"]
-                subItemsFunctions:[displayTopologie,exit_from_item,exit_from_item]
+                subItems: ["Aficher La Topologie","Ajouter Router","deconnecter"]
+                subItemsFunctions:[displayTopologie,addRouter,exit_from_item]
             }
             MenuItem_Q{
                 title: "Quality Of Service"
@@ -64,6 +64,7 @@ Item {
         }
     }
 
+
     function exit_from_item(){
         mainForm.exit_app()
     }
@@ -72,6 +73,9 @@ Item {
     }
     function displayClassification(){
         mainForm.displayClassification()
+    }
+    function addRouter(){
+        mainForm.showTopoDialogue()
     }
 }
 
