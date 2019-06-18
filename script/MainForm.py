@@ -10,6 +10,7 @@ from script.ui_mainwindow import Ui_Form
 from script.DeviceItem import DeviceItem
 from script.TopoScene import TopoScene
 from script.models.QosClassManager import QosClassManager
+from script.models.QosClassModel import QosClassModel,QosClass
 
 import requests
 import json
@@ -25,6 +26,7 @@ class MainForm(QWidget):
 
     color_enum = ["#f00","#0f0","#00f","#ff0"]
 
+    #!deprecated
     displayClasseSig = pyqtSignal(str,str,arguments=['name_p','color_p'])
 
     def __init__(self):
@@ -34,21 +36,20 @@ class MainForm(QWidget):
         self.setWindowTitle("QosOnSdn")
 
         self._classesManager = QosClassManager()
+        self._classesModel = QosClassModel(self)
 
         self.ui.menuWidget.rootContext().setContextProperty('mainForm',self)
         self.ui.topologieView.setRenderHint(QPainter.Antialiasing)
         self.drawTopologie()
         #self.ui.controleWidget.setVisible(False)
         self.ui.controleWidget.rootContext().setContextProperty('mainForm', self)
+        self.ui.controleWidget.rootContext().setContextProperty('classesModel', self._classesModel)
         self.ui.controleWidget.setSource(QUrl("qml/classification.qml"))
         self.ui.topologieView.setVisible(False)
         #TODO create the classes manager
         self.exportClasses()
 
 
-    def exportClasses(self):
-        for class_ob  in self._classesManager.classes.values():
-            self.displayClasseSig.emit(class_ob.name,random.choice(self.color_enum))
 
     @pyqtSlot()
     def exit_app(self):
@@ -63,7 +64,6 @@ class MainForm(QWidget):
     def displayClassification(self):
         self.ui.topologieView.setVisible(False)
         self.ui.controleWidget.setVisible(True)
-
 
     @pyqtSlot()
     def drawTopologie(self):
@@ -112,9 +112,16 @@ class MainForm(QWidget):
         print(ret_obj)
         return ret_obj
     
+    #!deprecated
     @pyqtProperty(QosClassManager)
     def classesManager(self):
         return self._classesManager
+    
+    #!deprecated
+    def exportClasses(self):
+        for class_ob in self._classesManager.classes.values():
+            self.displayClasseSig.emit(
+                class_ob.name, random.choice(self.color_enum))
 
 
 

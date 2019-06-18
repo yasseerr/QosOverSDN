@@ -13,3 +13,5 @@ tempCodeRunnerFile\.py
 __main__\.spec
 
 qml/Interfaces/
+
+*.pyc

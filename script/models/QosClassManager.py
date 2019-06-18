@@ -1,3 +1,6 @@
+
+#! Deprecated
+
 from script.models.QosClassModel import QosClass
 import yaml
 
@@ -10,16 +13,11 @@ class QosClassManager(QObject):
         self.classes = dict()
 
         # load classes from  Yaml file
-        self.loadClasses()
+        #self.loadClasses()
         #TODO publish classes to qml
 
 
-    def loadClasses(self):
-        f = open("data/QosClasses.yaml","r")
-        data_py = yaml.load(f)
-        for class_obj in data_py:
-            new_class = QosClass(class_obj)
-            self.classes[new_class.name] = new_class
+
     
     #TODO Save the classes function
 

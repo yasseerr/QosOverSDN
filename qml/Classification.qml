@@ -94,16 +94,17 @@ Rectangle {
             clip: true
             anchors.fill: parent
             anchors.margins: 10
+            model : classesModel
             delegate: Item {
                 id: element
                 x: 5
-                height: 100
-                width: 100
-
+                height: 170
+                width: 170
+                Component.onCompleted : console.log(classColor)
                 Rectangle {
                     id : backgroundRect
                     anchors.fill: parent
-                    color: colorCode
+                    color: classColor
                     opacity: 0.8
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
@@ -116,11 +117,9 @@ Rectangle {
                 }
 
             }
-            model: ListModel {
-                id:classModel
-            }
-            cellHeight: 110
-            cellWidth: 110
+
+            cellHeight: 180
+            cellWidth: 180
         }
 
     }

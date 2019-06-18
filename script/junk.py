@@ -1,4 +1,5 @@
 from PyQt5 import QtCore
+from PyQt5.QtChart import QChartView,QChart,QPieSeries,QLineSeries
 import napalm
 import yaml
 #print(QtCore.__version__)
@@ -19,6 +20,11 @@ router1.open()
 print(router1.get_facts())
 print(router1.get_interfaces())
 """
+
+"""
 f = open("data\QosClasses.yaml", "r")
 data_py = yaml.load(f)
 print(data_py)
+
+"""
+
