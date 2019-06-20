@@ -49,7 +49,7 @@ class MainForm(QWidget):
         self.ui.controleWidget.setSource(QUrl("qml/classification.qml"))
         self.ui.topologieView.setVisible(False)
         
-        self.topologyDialog = TopoDialog()
+        self.topologyDialog = TopoDialog(self.topoScene.devices)
         
 
 
@@ -81,6 +81,7 @@ class MainForm(QWidget):
     @pyqtSlot()
     def showTopoDialogue(self):
         self.topologyDialog.show()
+    
 
 
 
