@@ -1,0 +1,39 @@
+---
+- name : Policy1
+  color : '#FF9900'
+  classes :
+    - className : class1
+      bandwidh : 200
+    - className : class2
+      bandwidh : 200
+
+- name : Policy2
+  color : '#EAEBED'
+  classes :
+    - className : class1
+      bandwidh : 200
+    - className : class2
+      bandwidh : 200
+- name : Policy3
+  color : '#8E191E'
+  classes :
+    - className : class1
+      bandwidh : 200
+    - className : class2
+      bandwidh : 200
+
+- name : Policy4
+  color : '#2541B2'
+  classes :
+    - className : class1
+      bandwidh : 200
+    - className : class2
+      bandwidh : 200
+
+- name : Policy5
+  color : '#008000'
+  classes :
+    - className : class1
+      bandwidh : 200
+    - className : class2
+      bandwidh : 200
