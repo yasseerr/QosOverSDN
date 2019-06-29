@@ -12,7 +12,7 @@ from script.DeviceItem import DeviceItem
 from script.TopoScene import TopoScene
 from script.models.QosClassManager import QosClassManager
 from script.models.QosClassModel import QosClassModel,QosClass
-
+from script.models.QosPoliciesModel import QosPoliciesModel
 
 import requests
 import json
@@ -39,6 +39,7 @@ class MainForm(QWidget):
 
         self._classesManager = QosClassManager()
         self._classesModel = QosClassModel(self)
+        self._policiesModel = QosPoliciesModel(self)
 
         self.ui.menuWidget.rootContext().setContextProperty('mainForm',self)
         self.ui.topologieView.setRenderHint(QPainter.Antialiasing)
@@ -46,6 +47,7 @@ class MainForm(QWidget):
         #self.ui.controleWidget.setVisible(False)
         self.ui.controleWidget.rootContext().setContextProperty('mainForm', self)
         self.ui.controleWidget.rootContext().setContextProperty('classesModel', self._classesModel)
+        self.ui.controleWidget.rootContext().setContextProperty('policiesModel', self._policiesModel)
         self.ui.controleWidget.setSource(QUrl("qml/classification.qml"))
         self.ui.topologieView.setVisible(False)
         
@@ -66,6 +68,13 @@ class MainForm(QWidget):
     @pyqtSlot()
     def displayClassification(self):
         self.ui.topologieView.setVisible(False)
+        self.ui.controleWidget.setSource(QUrl("qml/classification.qml"))
+        self.ui.controleWidget.setVisible(True)
+
+    @pyqtSlot()
+    def displayPolicing(self):
+        self.ui.topologieView.setVisible(False)
+        self.ui.controleWidget.setSource(QUrl("qml/policing.qml"))
         self.ui.controleWidget.setVisible(True)
 
     @pyqtSlot()

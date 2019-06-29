@@ -50,8 +50,8 @@ Item {
             }
             MenuItem_Q{
                 title: "Quality Of Service"
-                subItems: ["Classification and Markage","Policing","shaping","Gestion du congestion"]
-                subItemsFunctions:[displayClassification,exit_from_item,exit_from_item]
+                subItems: ["Classification","Policing","shaping","Gestion du congestion"]
+                subItemsFunctions:[displayClassification,displayPolicing,exit_from_item,exit_from_item]
             }
             MenuItem_Q{
                 title: "AutoQos"
@@ -73,6 +73,9 @@ Item {
     }
     function displayClassification(){
         mainForm.displayClassification()
+    }
+    function displayPolicing(){
+        mainForm.displayPolicing()
     }
     function addRouter(){
         mainForm.showTopoDialogue()
