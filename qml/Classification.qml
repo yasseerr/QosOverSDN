@@ -1,4 +1,4 @@
-import QtQuick 2.4
+import QtQuick 2.12
 import QtQuick.Controls.Material 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Controls.Styles 1.4
@@ -83,12 +83,6 @@ Rectangle {
         }
 
 
-
-        AddClassPupup{
-            id : addClassPupup
-            anchors.centerIn: parent
-        }
-
         GridView {
             id: gridView
             clip: true
@@ -124,6 +118,13 @@ Rectangle {
         }
 
     }
+
+    AddClassPupup{
+        id : addClassPupup
+        anchors.centerIn: parent
+    }
+
+
     /*TODO refresh classes list when created l*/
     Component.onCompleted :{
         console.log(mainForm.classesManager)

@@ -1,99 +1,93 @@
-import QtQuick 2.4
+import QtQuick 2.12
 import QtQuick.Controls.Material 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Controls.Styles 1.4
+import QtQuick.Layouts 1.3
+import "./"
 
 Popup{
-    id : root
+    id: root
     width: 640
     height: 480
-    padding: 0
-    rightPadding: 0
-    leftPadding: 0
-    bottomPadding: 0
-    topPadding: 0
-    modal: true
-    opacity: 0.9
     clip: true
-    Rectangle {
-        id: rootContent
-        color: "#1c1a1a"
-        opacity: 0.9
+    modal: true
+    padding: 4
+    SwipeView {
+        id: swipeView
         anchors.fill: parent
-
-        Text {
-            id: classNamelabel
-            x: 30
-            y: 150
-            color: "#ffffff"
-            text: qsTr("Name of Class :")
-            anchors.left: parent.left
-            anchors.leftMargin: 30
-            anchors.top: parent.top
-            anchors.topMargin: 150
-            font.family: "Courier"
-            horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: 16
-        }
-        TextEdit {
-            id: classNameTextEdit
-            x: 190
-            y: 168
-            width: 200
-            height: 35
-            color: "#f5f3f3"
-            anchors.verticalCenterOffset: 10
-            font.bold: true
-            anchors.verticalCenter: classNamelabel.verticalCenter
-            anchors.left: classNamelabel.right
-            anchors.leftMargin: 10
-            horizontalAlignment: Text.AlignLeft
-            font.underline: false
-            selectionColor: "#00801c"
-            font.pixelSize: 17
-
-            Rectangle {
-                id: rectangle1
-                width: 165
-                height: 2
-                color: "#ffffff"
-                anchors.top: parent.top
-                anchors.topMargin: 30
-                anchors.left: parent.left
-                anchors.leftMargin: 0
+        clip: true
+        ClassNamePage{
+            id: classNamePage
+            onNextClicked: function(){
+                swipeView.setCurrentIndex(1)
             }
         }
-
-        Button {
-            id: nextButton
-            x: 440
-            y: 330
-            width: 100
-            height: 50
-            opacity: 1
-            spacing: 3
-
-            focusPolicy: Qt.WheelFocus
-
-            icon.name : "backgroungimage"
-            icon.source: "../assets/Forward arrow.png"
-            icon.color: "transparent"
-
-            text: "<font color='#ffffff'>Next</font>"
-            hoverEnabled: true
-            display: AbstractButton.TextUnderIcon
-            anchors.right: parent.right
-            anchors.rightMargin: 100
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 100
-            background: Rectangle{
-                anchors.fill: parent
-                color: nextButton.hovered?Qt.lighter("#1a1818"):"#1a1818"
-            }
-
+        MatchPage{
+            id:matchPage
         }
     }
+
+    PageIndicator {
+        id: pageIndicator
+        font.pointSize: 12
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 5
+        anchors.horizontalCenter: parent.horizontalCenter
+        count: swipeView.count
+        currentIndex: swipeView.currentIndex
+        delegate: Rectangle {
+            implicitWidth: 8
+            implicitHeight: 8
+
+            radius: width / 2
+            color: "#ffffff"
+
+            opacity: index ===pageIndicator.currentIndex ? 0.95 : pressed ? 0.7 : 0.45
+
+            Behavior on opacity {
+                OpacityAnimator {
+                    duration: 100
+                }
+            }
+        }
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -28,9 +28,16 @@ print(data_py)
 
 """
 
-
+"""
 driver  = napalm.get_network_driver("ios")
 router1 : napalm.ios.IOSDriver  = driver("13.0.0.1","projet2019","projet2019",optional_args={'secret':'projet2019'})
+router1.open()
+
+print(router1.get_facts())
+print(router1.get_interfaces())
+"""
+driver = napalm.get_network_driver("ios")
+router1: napalm.ios.IOSDriver = driver("13.0.0.3", "projet2019", "projet2019", optional_args={'secret': 'projet2019'})
 router1.open()
 
 print(router1.get_facts())
