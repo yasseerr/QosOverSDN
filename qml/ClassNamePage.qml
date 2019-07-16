@@ -7,6 +7,9 @@ import QtQuick.Layouts 1.3
 Item{
 
     property var onNextClicked: function(){}
+    property alias qosClassName: classNameTextEdit.text
+    property alias description: descriptionTextEdit.text
+    property string theMatch: radioButtonAll.checked?"match-all":"match-any"
 
     id : root
     width: 640
@@ -82,7 +85,7 @@ Item{
             hoverEnabled: true
             display: AbstractButton.TextUnderIcon
             anchors.right: parent.right
-            anchors.rightMargin: 100
+            anchors.rightMargin: 50
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 50
             background: Rectangle{
@@ -102,6 +105,8 @@ Item{
                 text: "match-any  Logical-OR"
                 checked: true
                 contentItem: Text {
+                    id: matchanyRadio
+                    height: 30
                     text: parent.text
                     leftPadding: radioButtonMany.indicator.width+radioButtonMany.spacing
                     color: "#ffffff"
@@ -113,8 +118,10 @@ Item{
                 id: radioButtonAll
                 x: -6
                 y: -6
+                height: 30
                 text: "match-All  Logical-AND"
                 contentItem: Text {
+                    id: matchAllRadio
                     text: parent.text
                     leftPadding: radioButtonAll.indicator.width+radioButtonAll.spacing
                     color: "#ffffff"
@@ -139,7 +146,7 @@ Item{
         }
 
         TextEdit {
-            id: classNameTextEdit1
+            id: descriptionTextEdit
             y: 269
             width: 200
             height: 38

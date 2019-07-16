@@ -24,6 +24,16 @@ Popup{
         }
         MatchPage{
             id:matchPage
+            onNextClicked:function(){
+                console.log(classNamePage.qosClassName)
+                console.log(classNamePage.description)
+                console.log(classNamePage.theMatch)
+                for(var i=0;i < protocoles.count; i++){
+                    console.log(protocoles.get(i).protocole+" "+protocoles.get(i).precedence)
+                }
+                protocoles.clear()
+                root.close()
+            }
         }
     }
 
