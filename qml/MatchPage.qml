@@ -170,7 +170,7 @@ Item {
                     }
 
                     Text {
-                        text: protocole+" > "+precedence
+                        text: protocole
                         font.bold: true
                         color: "#ffffff"
                         anchors.verticalCenter: parent.verticalCenter
