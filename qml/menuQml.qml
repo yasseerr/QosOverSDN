@@ -45,8 +45,8 @@ Item {
             height: childrenRect.height
             MenuItem_Q{
                 title: "Topologio"
-                subItems: ["Aficher La Topologie","Ajouter Router","deconnecter"]
-                subItemsFunctions:[displayTopologie,addRouter,exit_from_item]
+                subItems: ["Display Topologie","Add Router","Open Topologie"]
+                subItemsFunctions:[displayTopologie,addRouter,openTopologieView]
             }
             MenuItem_Q{
                 title: "Quality Of Service"
@@ -79,6 +79,9 @@ Item {
     }
     function addRouter(){
         mainForm.showTopoDialogue()
+    }
+    function openTopologieView(){
+        mainForm.openTopologieView()
     }
 }
 

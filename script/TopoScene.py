@@ -4,7 +4,7 @@ from PyQt5.QtGui import QImage,QPixmap,QBrush,QColor
 from script.DeviceItem import DeviceItem,LinkItem
 from script.Device import Device
 import yaml
-
+import networkx as nx
 
 class TopoScene(QGraphicsScene):
     def __init__(self,topoFile):
@@ -18,6 +18,8 @@ class TopoScene(QGraphicsScene):
         self.name = "topologieName"
         self.createDevicesFromYaml(topoFile)
         self.createLinks()
+        self.graph = nx.Graph()
+        self.buildGraph()
 
     def createDevicesFromYaml(self,fileName:str):
         topoFile = open(fileName,'r')
@@ -44,6 +46,21 @@ class TopoScene(QGraphicsScene):
                 destinationDevice.neighbors.append(sourceDevice)
                 self.links.append(newLink)
                 self.addItem(newLink)
+    def buildGraph(self):
+        for deviceIndex in self.devices.keys():
+            self.graph.add_node(deviceIndex)
+        for link in self.links:
+            self.graph.add_edge(link.src.device.id, link.des.device.id)
+        positions = nx.spectral_layout(self.graph,scale=len(self.devices)*50)
+        for posKey in positions.keys():
+            thePosition = positions[posKey]
+            deviceI : DeviceItem = self.devices[posKey]
+            deviceI.setPos(thePosition[0],thePosition[1])
+            deviceI.update()
+        for linkItem  in self.links:
+            linkItem.updateLine() 
+            linkItem.update()
+
 
     #! deprecaed
     def createDevices(self, linkList:list):
