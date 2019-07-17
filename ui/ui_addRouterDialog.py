@@ -15,7 +15,7 @@ class Ui_Dialog(object):
         Dialog.setWindowModality(QtCore.Qt.WindowModal)
         Dialog.resize(640, 480)
         Dialog.setAcceptDrops(False)
-        Dialog.setWindowOpacity(0.9)
+        Dialog.setWindowOpacity(1)
         Dialog.setAutoFillBackground(False)
         Dialog.setModal(True)
         self.horizontalLayout = QtWidgets.QHBoxLayout(Dialog)

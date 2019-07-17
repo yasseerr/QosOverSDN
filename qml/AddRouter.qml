@@ -19,7 +19,7 @@ Item {
     clip: true
     Rectangle {
         id: rootContent
-        color: "#1c1a1a"
+        color: "#ee1c1a1a"
         opacity: 1
         anchors.fill: parent
 
@@ -247,6 +247,8 @@ Item {
         id:pingingPopup
     }
 }
+
+
 
 
 
