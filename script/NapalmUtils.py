@@ -12,8 +12,8 @@ def test_router_exist(username,password,secret,adress,os):
     print(os+" is alive "+str(ret))
     return ret
 
-def get_interfaces_ip(hostname,username,password,secret):
-    driver = get_network_driver('ios')
+def get_interfaces_ip(hostname,username,password,secret,os):
+    driver = get_network_driver(os)
     optional_args = {'secret': secret}
 
     iosvl2 = driver(hostname, username, password, optional_args=optional_args)
@@ -47,8 +47,8 @@ def get_interfaces_ip(hostname,username,password,secret):
 
 def get_neighbors(x: Device,y:Device):
 
-    interfacesX = get_interfaces_ip(x.hostname,x.username,x.password,x.secret)
-    interfacesY = get_interfaces_ip(y.hostname,y.username,y.password,y.secret)
+    interfacesX = get_interfaces_ip(x.hostname,x.username,x.password,x.secret,x.os)
+    interfacesY = get_interfaces_ip(y.hostname,y.username,y.password,y.secret,y.os)
 
 
 
