@@ -45,7 +45,7 @@ def get_interfaces_ip(hostname,username,password,secret,os):
 
     return listINT
 
-def get_neighbors(x: Device,y:Device):
+def check_adjacence(x: Device,y:Device):
 
     interfacesX = get_interfaces_ip(x.hostname,x.username,x.password,x.secret,x.os)
     interfacesY = get_interfaces_ip(y.hostname,y.username,y.password,y.secret,y.os)
