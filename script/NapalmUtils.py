@@ -75,4 +75,25 @@ def check_adjacence(x: Device,y:Device):
 
     return T
 
+def send_config_file(f:str,device:Device):
+    driver = get_network_driver(device.os)
+    optional_args = {'secret': device.secret,
+                     'inline_transfer':True}
+
+    dev = driver(device.hostname, device.username, device.password, optional_args=optional_args)
+    dev.open()
+    try:
+        dev.load_merge_candidate(f)
+        defferences = dev.compare_config()
+        if len(defferences)>0:
+            print(defferences)
+            dev.commit_config()
+        else:
+            dev.discard_config()
+    except:
+        print("Ther is a problem with send the configuration file")
+
+    dev.close()
+
+
 
