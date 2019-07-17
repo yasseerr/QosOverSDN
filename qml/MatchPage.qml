@@ -7,6 +7,7 @@ Item {
 
     property alias protocoles : addedListView.model
     property var onNextClicked: function(){}
+     property var onReturnClicked: function(){}
 
     id: root
     width: 640
@@ -232,6 +233,13 @@ Item {
             hoverEnabled: true
             spacing: 3
             icon.name: "backgroungimage"
+
+            onClicked : {
+                onReturnClicked()
+                //pingingPopup.open()
+                //dialogRef.onAddRouterClicked(adressInput.text,usernameInput.text,passwordInput.text,
+                //                             secretInput.text,osComboBox.currentText)
+            }
         }
 
         Text {

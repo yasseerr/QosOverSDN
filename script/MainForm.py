@@ -48,7 +48,7 @@ class MainForm(QWidget):
         self.ui.controleWidget.rootContext().setContextProperty('mainForm', self)
         self.ui.controleWidget.rootContext().setContextProperty('classesModel', self._classesModel)
         self.ui.controleWidget.rootContext().setContextProperty('policiesModel', self._policiesModel)
-        self.ui.controleWidget.setSource(QUrl("qml/classification.qml"))
+        self.ui.controleWidget.setSource(QUrl("qml/Classification.qml"))
         self.ui.topologieView.setVisible(False)
         
         self.topologyDialog = TopoDialog(self.topoScene.devices)
