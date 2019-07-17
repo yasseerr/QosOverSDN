@@ -6,6 +6,8 @@ import QtQuick.Controls.Styles 1.4
 Item {
     property var interfaces: []
     property var destinationsMAC: []
+    property var onReturnClicked: function(){}
+
 
     id: root
     width: 640
@@ -111,7 +113,7 @@ Item {
                 color: rButton.hovered ? Qt.lighter("#1a1818") : "#1a1818"
             }
             onClicked: {
-
+                onReturnClicked()
                 //pingingPopup.open()
                 //dialogRef.onAddRouterClicked(adressInput.text,usernameInput.text,passwordInput.text,
                 //                             secretInput.text,osComboBox.currentText)
@@ -134,9 +136,9 @@ Item {
         Tumbler {
             id: tumbler1
             anchors.right: parent.right
-            anchors.rightMargin: 188
+            anchors.rightMargin: 191
             anchors.left: parent.left
-            anchors.leftMargin: 391
+            anchors.leftMargin: 388
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 310
             anchors.top: parent.top
@@ -179,7 +181,7 @@ Item {
             color: "#000000"
             anchors.top: parent.top
             anchors.topMargin: 100
-            anchors.leftMargin: -15
+            anchors.leftMargin: 0
             anchors.left: tumbler1.right
         }
 
@@ -191,7 +193,7 @@ Item {
             anchors.top: parent.top
             anchors.topMargin: 50
             anchors.left: tumbler1.right
-            anchors.leftMargin: -30
+            anchors.leftMargin: -5
             model: 10
         }
     }
@@ -214,8 +216,10 @@ Item {
 
 
 
+
+
 /*##^## Designer {
     D{i:8;anchors_x:200;anchors_y:156}D{i:9;anchors_height:127;anchors_width:60;anchors_x:430;anchors_y:43}
-D{i:10;anchors_x:305;anchors_y:159}D{i:12;anchors_y:-3}D{i:13;anchors_height:127;anchors_width:60;anchors_x:430;anchors_y:43}
+D{i:10;anchors_x:305;anchors_y:159}D{i:12;anchors_y:"-3"}D{i:13;anchors_height:127;anchors_width:60;anchors_x:430;anchors_y:43}
 }
  ##^##*/

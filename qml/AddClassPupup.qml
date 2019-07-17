@@ -34,10 +34,17 @@ Popup{
                 protocoles.clear()
                 root.close()*/
                 swipeView.setCurrentIndex(2)
+
+            }
+            onReturnClicked: function(){
+                 swipeView.setCurrentIndex(0)
             }
         }
         MatchFinPage{
-
+            id:matchFinPage
+            onReturnClicked: function(){
+                 swipeView.setCurrentIndex(1)
+            }
         }
     }
 
