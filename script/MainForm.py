@@ -44,13 +44,12 @@ class MainForm(QWidget):
         self.ui.menuWidget.rootContext().setContextProperty('mainForm',self)
         self.ui.topologieView.setRenderHint(QPainter.Antialiasing)
         self.drawTopologie("topo1.yaml")
-        #self.ui.controleWidget.setVisible(False)
+        self.ui.controleWidget.setVisible(True)
         self.ui.controleWidget.rootContext().setContextProperty('mainForm', self)
         self.ui.controleWidget.rootContext().setContextProperty('classesModel', self._classesModel)
         self.ui.controleWidget.rootContext().setContextProperty('policiesModel', self._policiesModel)
         self.ui.controleWidget.setSource(QUrl("qml/Classification.qml"))
         self.ui.topologieView.setVisible(False)
-        
         self.topologyDialog = TopoDialog(self.topoScene.devices)
         
 

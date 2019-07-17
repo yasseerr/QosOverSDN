@@ -51,7 +51,7 @@ class TopoScene(QGraphicsScene):
             self.graph.add_node(deviceIndex)
         for link in self.links:
             self.graph.add_edge(link.src.device.id, link.des.device.id)
-        positions = nx.spectral_layout(self.graph,scale=len(self.devices)*50)
+        positions = nx.kamada_kawai_layout(self.graph,scale=len(self.devices)*50)
         for posKey in positions.keys():
             thePosition = positions[posKey]
             deviceI : DeviceItem = self.devices[posKey]
