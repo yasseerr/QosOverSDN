@@ -38,13 +38,13 @@ Item {
         Text {
             id: passwordlabel
             color: "#ffffff"
-            text: qsTr("Precedence :")
+            text: qsTr(" IP Precedence :")
             anchors.topMargin: 50
             anchors.left: parent.left
             font.pixelSize: 16
             horizontalAlignment: Text.AlignHCenter
             anchors.top: matchProtocol.bottom
-            anchors.leftMargin: 30
+            anchors.leftMargin: 18
             font.family: "Courier"
         }
 
@@ -93,7 +93,9 @@ Item {
             displayText:currentText
             anchors.left: matchProtocol.right
             anchors.leftMargin: 6
-            model: ["arp     IP ARP",
+            model: [
+                "",
+                "arp     IP ARP",
                 "bgp     Border Gateway Protocol",
                 "cdp     Cisco Discovery Protocol",
                 "dhcp    Dynamic Host Configuration",
@@ -126,7 +128,8 @@ Item {
             anchors.verticalCenter: passwordlabel.verticalCenter
             anchors.leftMargin: 0
             displayText:currentText
-            model: ["critical        Match packets with critical precedence (5",
+            model: ["IP Precedence",
+                "critical        Match packets with critical precedence (5",
                 "routine         Match packets with routine precedence (0)",
                 "network         Match packets with network control precedence (7)",
                 "priority        Match packets with priority precedence (1)",
@@ -142,11 +145,11 @@ Item {
             id: addedListView
             spacing: 0
             anchors.left: protocoleComboBox.right
-            anchors.leftMargin: 62
+            anchors.leftMargin: 125
             anchors.top: parent.top
             anchors.topMargin: 54
             anchors.bottom: nextButton.top
-            anchors.bottomMargin: 50
+            anchors.bottomMargin: 71
             anchors.right: parent.right
             anchors.rightMargin: 8
             header: Text {
@@ -182,25 +185,118 @@ Item {
             }
         }
 
-        RoundButton {
-            id: roundButton
-            x: 151
-            width: 70
-            height: 70
-            text: "Add"
-            anchors.top: precedenceComboBox.bottom
-            anchors.topMargin: 42
-            anchors.right: precedenceComboBox.left
-            anchors.rightMargin: -25
+        Button {
+            id: roundButtonAdd
+            x: 391
+            width: 30
+            height: 30
+            text: "+"
+            anchors.left: protocoleComboBox.right
+            anchors.leftMargin: 5
+            clip: false
+            scale: 1
+            rotation: 0
+            anchors.top: parent.top
+            anchors.topMargin: 85
             onClicked: {
                 var addedMatch = {
-                     "protocole" :protocoleComboBox.currentText.split(" ")[0],
-                     "precedence" :precedenceComboBox.currentText.split(" ")[0]
+                    "protocole" :protocoleComboBox.currentText.split(" ")[0],
+                    "precedence" :precedenceComboBox.currentText.split(" ")[0]
                 }
                 addedListView.model.append(addedMatch)
                 addedListView.model.sync()
 
             }
+        }
+
+        Button {
+            id: rButton
+            x: 88
+            y: 382
+            width: 100
+            height: 50
+            text: "<font color='#fff'>Return</font>"
+            icon.color: "#00000000"
+            icon.source: "../assets/returnButton.png"
+            anchors.bottomMargin: 48
+            focusPolicy: Qt.WheelFocus
+            anchors.rightMargin: 452
+            anchors.bottom: parent.bottom
+            display: AbstractButton.TextUnderIcon
+            opacity: 1
+            background: Rectangle {
+                color: rButton.hovered?Qt.lighter("#1a1818"):"#1a1818"
+                anchors.fill: parent
+            }
+            anchors.right: parent.right
+            hoverEnabled: true
+            spacing: 3
+            icon.name: "backgroungimage"
+        }
+
+        Text {
+            id: classmap
+            x: -9
+            color: "#ffffff"
+            text: qsTr("Match IP dhcp  :")
+            anchors.left: parent.left
+            font.pixelSize: 16
+            anchors.top: passwordlabel.bottom
+            anchors.topMargin: 90
+            horizontalAlignment: Text.AlignHCenter
+            font.family: "Courier"
+            anchors.leftMargin: 35
+        }
+
+        ComboBox {
+            id: osComboBoxIPDscp
+            x: 206
+            width: 207
+            height: 42
+            model: [
+            "IPDSCP",
+           "af11     Match packets with AF11 dscp (001010)",
+          "af12     Match packets with AF12 dscp (001100)",
+          "af13     Match packets with AF13 dscp (001110)",,
+          "af21     Match packets with AF21 dscp (010010)",
+          "af22     Match packets with AF22 dscp (010100)",
+          "af23     Match packets with AF23 dscp (010110)",
+          "af31     Match packets with AF31 dscp (011010)",
+          "af32     Match packets with AF32 dscp (011100)",
+          "af33     Match packets with AF33 dscp (011110)",
+          "af41     Match packets with AF41 dscp (100010)",
+          "af42     Match packets with AF42 dscp (100100)",
+          "af43     Match packets with AF43 dscp (100110)",
+          "cs1      Match packets with CS1(precedence 1) dscp (001000)",
+          "cs2      Match packets with CS2(precedence 2) dscp (010000)",
+          "cs3      Match packets with CS3(precedence 3) dscp (011000)",
+          "cs4      Match packets with CS4(precedence 4) dscp (100000)",
+          "cs5      Match packets with CS5(precedence 5) dscp (101000)",
+          "cs6      Match packets with CS6(precedence 6) dscp (110000)",
+                "cs7      Match packets with CS7(precedence 7) dscp (111000)",
+                "default  Match packets with default dscp (000000)",
+                "ef       Match packets with EF dscp (101110)"]
+            anchors.left: classmap.right
+            anchors.top: precedenceComboBox.bottom
+            anchors.topMargin: 72
+            displayText: currentText
+            anchors.leftMargin: 25
+        }
+
+        Button {
+            id: roundButtonSub
+            x: 427
+            y: 4
+            width: 30
+            height: 30
+            text: "-"
+            rotation: 0
+            anchors.leftMargin: 5
+            anchors.topMargin: 85
+            anchors.top: parent.top
+            anchors.left: roundButtonAdd.right
+            scale: 1
+            clip: false
         }
 
 
@@ -256,8 +352,16 @@ Item {
 
 
 
+
+
+
+
+
+
+
+
 /*##^## Designer {
     D{i:7;anchors_height:42}D{i:8;anchors_height:227;anchors_width:182;anchors_x:440;anchors_y:87}
-D{i:15;anchors_y:224}
+D{i:15;anchors_y:224}D{i:20;anchors_y:224}
 }
  ##^##*/

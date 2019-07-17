@@ -159,7 +159,7 @@ Item {
             id: ipaddresslabel
             x: 26
             color: "#ffffff"
-            text: qsTr("IpAddress :")
+            text: qsTr("IpAddress Manager :")
             anchors.topMargin: 50
             anchors.left: parent.left
             font.pixelSize: 16
