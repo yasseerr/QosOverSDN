@@ -43,7 +43,7 @@ class MainForm(QWidget):
 
         self.ui.menuWidget.rootContext().setContextProperty('mainForm',self)
         self.ui.topologieView.setRenderHint(QPainter.Antialiasing)
-        self.drawTopologie()
+        self.drawTopologie("data/topologies/topo1.yaml")
         #self.ui.controleWidget.setVisible(False)
         self.ui.controleWidget.rootContext().setContextProperty('mainForm', self)
         self.ui.controleWidget.rootContext().setContextProperty('classesModel', self._classesModel)
@@ -78,14 +78,10 @@ class MainForm(QWidget):
         self.ui.controleWidget.setVisible(True)
 
     @pyqtSlot()
-    def drawTopologie(self):
-        self.topoScene = TopoScene()
+    def drawTopologie(self,topoFile):
+        self.topoScene = TopoScene(topoFile)
         self.ui.topologieView.setScene(self.topoScene)
-        #ToDO get the topologie object
-        linksArr = self.getObjectFromController("links")
-        #TODO create the devices and links
-        self.topoScene.createDevices(linksArr)
-        #TODO add the items to the library
+
     
     @pyqtSlot()
     def showTopoDialogue(self):
