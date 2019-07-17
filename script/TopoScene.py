@@ -2,23 +2,50 @@ from PyQt5.QtCore import QUrl,QRectF,Qt
 from PyQt5.QtWidgets import QGraphicsScene,QGraphicsView
 from PyQt5.QtGui import QImage,QPixmap,QBrush,QColor
 from script.DeviceItem import DeviceItem,LinkItem
-
+from script.Device import Device
+import yaml
 
 
 class TopoScene(QGraphicsScene):
-    def __init__(self):
+    def __init__(self,topoFile):
         super().__init__()
         self.bgImage = QImage("assets/bg_brush2.png")
         self.setBackgroundBrush(QBrush(self.bgImage))
         #self.setSceneRect(QRectF(0,0,600,600))
         #TODO initialise the items
-        dev1 = DeviceItem("test")
-        self.addItem(dev1)
-
         self.devices = {}
         self.links = []
+        self.name = "topologieName"
+        self.createDevicesFromYaml(topoFile)
+        self.createLinks()
 
+    def createDevicesFromYaml(self,fileName:str):
+        topoFile = open(fileName,'r')
+        topoDict = yaml.load(topoFile)
+        self.name = topoDict['name']
+        for deviceDict in topoDict["devices"]:
+            newDevice = Device(deviceDict)
+            newDeviceItem = DeviceItem(newDevice)
+            newDeviceItem.setPos(len(self.devices)*200,300)
+            self.devices[newDevice.id] = newDeviceItem
+            self.addItem(newDeviceItem)
+    
+    def createLinks(self):
+        for deviceItem in self.devices.values():
+            sourceDevice :DeviceItem  = deviceItem
+            for deviceIndex in sourceDevice.device.neighborsIds:
+                destinationDevice : DeviceItem = self.devices[deviceIndex]
+                if(sourceDevice.neighbors.__contains__(destinationDevice)): 
+                    continue
+                newLink : LinkItem = LinkItem(sourceDevice,destinationDevice)
+                sourceDevice.links.append(newLink)
+                destinationDevice.links.append(newLink)
+                sourceDevice.neighbors.append(destinationDevice)
+                destinationDevice.neighbors.append(sourceDevice)
+                self.links.append(newLink)
+                self.addItem(newLink)
 
+    #! deprecaed
     def createDevices(self, linkList:list):
         for linkObj in linkList:
             src_name = linkObj["src-switch"]
