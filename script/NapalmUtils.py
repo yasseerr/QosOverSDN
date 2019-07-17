@@ -11,3 +11,68 @@ def test_router_exist(username,password,secret,adress,os):
     ret = device.is_alive()["is_alive"]
     print(os+" is alive "+str(ret))
     return ret
+
+def get_interfaces_ip(hostname,username,password,secret):
+    driver = get_network_driver('ios')
+    optional_args = {'secret': secret}
+
+    iosvl2 = driver(hostname, username, password, optional_args=optional_args)
+    iosvl2.open()
+
+    interfacesIP = iosvl2.get_interfaces_ip()
+    print(interfacesIP)
+    stringJSON = json.dumps(interfacesIP)
+    table = stringJSON.split(",")
+    listINT = []
+    for x in table:
+        y = x.split(":")
+        i = 0
+        s = []
+        for z in y:
+            e = z.split('"')
+            i = i + 1
+
+            if (i == 1 or i == 3):
+                s.append(e[1])
+            if (i == 5):
+                t = e[0].split("}")
+                t2=t[0]
+                s.append(int(t2[1:]))
+                listINT.append(s)
+                s = []
+                i == 0
+
+
+    return listINT
+
+def get_neighbors(x: Device,y:Device):
+
+    interfacesX = get_interfaces_ip(x.hostname,x.username,x.password,x.secret)
+    interfacesY = get_interfaces_ip(y.hostname,y.username,y.password,y.secret)
+
+
+
+    print(interfacesX)
+    print(interfacesY)
+
+    T=False
+    for xx in interfacesX:
+
+        for yy in interfacesY:
+            if (xx[2]==yy[2]):
+                masq = xx[2] / 8
+                masq = int(masq)
+                X = xx[1].split(".")
+                Y = yy[1].split(".")
+                t = True
+
+                for i in range(masq):
+                    if not(X[i] == Y[i]):
+                        t = False
+
+
+                if(t==True):T=True
+
+    return T
+
+

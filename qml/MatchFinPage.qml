@@ -15,11 +15,15 @@ Item {
     Rectangle {
         id: rootContent
         color: "#ee1c1a1a"
+        anchors.rightMargin: 1
+        anchors.bottomMargin: 0
+        anchors.leftMargin: -1
+        anchors.topMargin: 0
         opacity: 1
         anchors.fill: parent
 
         Text {
-            id: matchProtocol
+            id: matchInpytInterface
             x: 30
             y: 150
             color: "#ffffff"
@@ -34,14 +38,14 @@ Item {
         }
 
         Text {
-            id: precedence
+            id: destationAddress
             color: "#ffffff"
             text: qsTr("Match destination-address:")
             anchors.topMargin: 50
             anchors.left: parent.left
             font.pixelSize: 16
             horizontalAlignment: Text.AlignHCenter
-            anchors.top: matchProtocol.bottom
+            anchors.top: matchInpytInterface.bottom
             anchors.leftMargin: 30
             font.family: "Courier"
         }
@@ -115,36 +119,79 @@ Item {
         }
 
         ComboBox {
-            id: osComboBoxProtocol
+            id: osComboBoxInterface
             y: 88
             width: 207
             height: 42
             displayText: currentText
-            anchors.left: matchProtocol.right
+            anchors.left: matchInpytInterface.right
             anchors.leftMargin: 32
-            anchors.topMargin: 90
-            model: ["Les Interfaces"]
-            anchors.top: parent.top
-        }
-
-        ComboBox {
-            id: osComboBoxdestinationaddress
-            width: 207
-            height: 42
-            anchors.leftMargin: 21
-            displayText: currentText
-            anchors.topMargin: 25
-            model: ["Mac Address"]
-            anchors.left: precedence.right
-            anchors.top: osComboBoxProtocol.bottom
+            anchors.topMargin: -30
+            model: ["your Interface","FastEthernet","GigaEthernet"]
+            anchors.top: matchInpytInterface.bottom
         }
 
         Tumbler {
-            id: tumbler
-            x: 550
-            y: 59
+            id: tumbler1
+            anchors.right: parent.right
+            anchors.rightMargin: 188
+            anchors.left: parent.left
+            anchors.leftMargin: 391
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 310
+            anchors.top: parent.top
+            anchors.topMargin: 50
+            model: 10
+        }
+
+        TextInput {
+            id: textInputAddMac
+            width: 221
+            height: 36
+            color: "#ffffff"
+            text: qsTr("|")
+            font.family: "Times New Roman"
+            anchors.left: parent.left
+            anchors.leftMargin: 305
+            anchors.top: osComboBoxInterface.bottom
+            anchors.topMargin: 30
+            font.pixelSize: 12
+        }
+
+        Rectangle {
+            id: rectangle2
+            x: -9
+            y: -3
+            width: 200
+            height: 2
+            color: "#ffffff"
+            anchors.leftMargin: 305
+            anchors.topMargin: 195
+            anchors.top: parent.top
+            anchors.left: parent.left
+        }
+
+        Rectangle {
+            id: rectangle3
+            x: -2
+            width: 1
+            height: 18
+            color: "#000000"
+            anchors.top: parent.top
+            anchors.topMargin: 100
+            anchors.leftMargin: -15
+            anchors.left: tumbler1.right
+        }
+
+        Tumbler {
+            id: tumbler2
             width: 60
-            height: 127
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 310
+            anchors.top: parent.top
+            anchors.topMargin: 50
+            anchors.left: tumbler1.right
+            anchors.leftMargin: -30
             model: 10
         }
     }
@@ -155,7 +202,20 @@ Item {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /*##^## Designer {
-    D{i:8;anchors_x:200;anchors_y:156}
+    D{i:8;anchors_x:200;anchors_y:156}D{i:9;anchors_height:127;anchors_width:60;anchors_x:430;anchors_y:43}
+D{i:10;anchors_x:305;anchors_y:159}D{i:12;anchors_y:-3}D{i:13;anchors_height:127;anchors_width:60;anchors_x:430;anchors_y:43}
 }
  ##^##*/

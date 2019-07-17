@@ -68,7 +68,7 @@ class MainForm(QWidget):
     @pyqtSlot()
     def displayClassification(self):
         self.ui.topologieView.setVisible(False)
-        self.ui.controleWidget.setSource(QUrl("qml/classification.qml"))
+        self.ui.controleWidget.setSource(QUrl("qml/Classification.qml"))
         self.ui.controleWidget.setVisible(True)
 
     @pyqtSlot()
