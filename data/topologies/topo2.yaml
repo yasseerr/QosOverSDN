@@ -1,0 +1,42 @@
+---
+name : topo1
+devices:
+  - 
+    id: 0
+    username: projet2019 
+    password: projet2019
+    secret: projet2019
+    ipAddr: 13.0.0.1
+    os: ios
+    neighbors:
+      - 1
+      - 3
+  - 
+    id: 1
+    username: projet2019 
+    password: projet2019
+    secret: projet2019
+    ipAddr: 13.0.0.2
+    os: ios
+    neighbors:
+      - 1
+      - 2
+  - 
+    id: 2
+    username: projet2019 
+    password: projet2019
+    secret: projet2019
+    ipAddr: 13.0.0.2
+    os: ios
+    neighbors:
+      - 3
+      - 1
+  - 
+    id: 3
+    username: projet2019 
+    password: projet2019
+    secret: projet2019
+    ipAddr: 13.0.0.2
+    os: ios
+    neighbors:
+      - 1

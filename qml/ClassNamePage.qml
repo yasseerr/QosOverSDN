@@ -7,6 +7,7 @@ import QtQuick.Layouts 1.3
 Item{
 
     property var onNextClicked: function(){}
+
     property alias qosClassName: classNameTextEdit.text
     property alias description: descriptionTextEdit.text
     property string theMatch: radioButtonAll.checked?"match-all":"match-any"
