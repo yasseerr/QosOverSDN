@@ -50,13 +50,13 @@ Item {
             }
             MenuItem_Q{
                 title: "Quality Of Service"
-                subItems: ["Classification","Policing","shaping","Gestion du congestion"]
+                subItems: ["Classification","Policing,shaping, Gestion du congestion","Service policy"]
                 subItemsFunctions:[displayClassification,displayPolicing,exit_from_item,exit_from_item]
             }
             MenuItem_Q{
                 title: "AutoQos"
-                subItems: ["affichage","Actualiser"]
-                subItemsFunctions:[exit_from_item,exit_from_item]
+                subItems: ["affichage"]
+                subItemsFunctions:[displayAutoQos]
             }
             MenuItem_Q{
                 title: "Deconnecter"
@@ -82,6 +82,9 @@ Item {
     }
     function openTopologieView(){
         mainForm.openTopologieView()
+    }
+    function displayAutoQos(){
+        mainForm.displayAutoQos()
     }
 }
 
