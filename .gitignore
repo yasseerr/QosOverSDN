@@ -17,3 +17,7 @@ qml/Interfaces/
 *.pyc
 
 script/models/__pycache__/
+
+\.idea/
+
+script/MainForm\.py\.7cced988adb8f04f2a120be39563003b\.py

@@ -43,14 +43,13 @@ class MainForm(QWidget):
 
         self.ui.menuWidget.rootContext().setContextProperty('mainForm',self)
         self.ui.topologieView.setRenderHint(QPainter.Antialiasing)
-        self.drawTopologie("data/topologies/topo1.yaml")
-        #self.ui.controleWidget.setVisible(False)
+        self.drawTopologie("topo1.yaml")
+        self.ui.controleWidget.setVisible(True)
         self.ui.controleWidget.rootContext().setContextProperty('mainForm', self)
         self.ui.controleWidget.rootContext().setContextProperty('classesModel', self._classesModel)
         self.ui.controleWidget.rootContext().setContextProperty('policiesModel', self._policiesModel)
         self.ui.controleWidget.setSource(QUrl("qml/Classification.qml"))
         self.ui.topologieView.setVisible(False)
-        
         self.topologyDialog = TopoDialog(self.topoScene.devices)
         
 
@@ -77,15 +76,23 @@ class MainForm(QWidget):
         self.ui.controleWidget.setSource(QUrl("qml/policing.qml"))
         self.ui.controleWidget.setVisible(True)
 
-    @pyqtSlot()
+    @pyqtSlot(str)
     def drawTopologie(self,topoFile):
-        self.topoScene = TopoScene(topoFile)
+        self.topoScene = TopoScene("data/topologies/"+topoFile)
         self.ui.topologieView.setScene(self.topoScene)
+        self.displayTopologie()
+
 
     
     @pyqtSlot()
     def showTopoDialogue(self):
         self.topologyDialog.show()
+    
+    @pyqtSlot()
+    def openTopologieView(self):
+        self.ui.topologieView.setVisible(False)
+        self.ui.controleWidget.setSource(QUrl("qml/OpenTopologie.qml"))
+        self.ui.controleWidget.setVisible(True)
     
 
 

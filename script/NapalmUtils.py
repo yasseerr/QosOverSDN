@@ -1,5 +1,6 @@
 from napalm import get_network_driver
 from napalm.ios import IOSDriver
+from script.Device import Device
 
 from script import Device
 
@@ -34,7 +35,6 @@ def get_interfaces_ip(hostname,username,password,secret,os):
         for z in y:
             e = z.split('"')
             i = i + 1
-
             if (i == 1 or i == 3):
                 s.append(e[1])
             if (i == 5):
@@ -44,23 +44,16 @@ def get_interfaces_ip(hostname,username,password,secret,os):
                 listINT.append(s)
                 s = []
                 i == 0
-
-
     return listINT
 
 def check_adjacence(x: Device,y:Device):
-
-    interfacesX = get_interfaces_ip(x.hostname,x.username,x.password,x.secret,x.os)
-    interfacesY = get_interfaces_ip(y.hostname,y.username,y.password,y.secret,y.os)
-
-
-
+    interfacesX = get_interfaces_ip(x.ipAddr,x.username,x.password,x.secret,x.os)
+    interfacesY = get_interfaces_ip(y.ipAddr,y.username,y.password,y.secret,y.os)
     print(interfacesX)
     print(interfacesY)
 
     T=False
     for xx in interfacesX:
-
         for yy in interfacesY:
             if (xx[2]==yy[2]):
                 masq = xx[2] / 8
@@ -68,14 +61,10 @@ def check_adjacence(x: Device,y:Device):
                 X = xx[1].split(".")
                 Y = yy[1].split(".")
                 t = True
-
                 for i in range(masq):
                     if not(X[i] == Y[i]):
                         t = False
-
-
                 if(t==True):T=True
-
     return T
 
 
