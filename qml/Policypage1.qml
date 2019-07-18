@@ -31,15 +31,12 @@ Item{
             id: policyNamelabel
             x: 30
             y: 150
-            width: 540
-            height: 25
+            width: 190
+            height: 30
             color: "#ffffff"
             text: qsTr("Name of Policy * :")
-            anchors.horizontalCenter: descriptionTextEdit.horizontalCenter
-            anchors.left: parent.left
-            anchors.leftMargin: 50
-            anchors.top: parent.top
-            anchors.topMargin: 146
+            anchors.verticalCenterOffset: -80
+            anchors.verticalCenter: parent.verticalCenter
             font.family: "Courier"
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: 16
@@ -77,10 +74,11 @@ Item{
 
         Text {
             id: descriptionTextEdit
-            height: 20
+            width: 143
+            height: 30
             color: "#ffffff"
             text: qsTr("discription :")
-            anchors.leftMargin: 50
+            anchors.leftMargin: 37
             anchors.topMargin: 67
             horizontalAlignment: Text.AlignHCenter
             lineHeight: 0.6
@@ -97,9 +95,8 @@ Item{
             width: 187
             height: 33
             color: "#ffffff"
+            anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: descriptionTextEdit.verticalCenter
-            anchors.left: parent.left
-            anchors.leftMargin: 190
             font.pixelSize: 12
 
             Rectangle {
@@ -120,9 +117,10 @@ Item{
             id: textInput1
             x: 210
             y: 210
-            width: 187
-            height: 33
+            width: 188
+            height: 30
             color: "#ffffff"
+            anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenterOffset: 0
             anchors.verticalCenter: policyNamelabel.verticalCenter
             font.pixelSize: 12
@@ -215,7 +213,9 @@ Item{
 
 
 
+
+
 /*##^## Designer {
-    D{i:8;anchors_y:210}D{i:10;anchors_y:210}
+    D{i:8;anchors_y:210}
 }
  ##^##*/

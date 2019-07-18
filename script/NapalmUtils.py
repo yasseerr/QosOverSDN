@@ -1,6 +1,9 @@
 from napalm import get_network_driver
 from napalm.ios import IOSDriver
 
+from script import Device
+
+
 def test_router_exist(username,password,secret,adress,os):
 
     optional_args = {'secret':secret}

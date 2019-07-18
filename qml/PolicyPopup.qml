@@ -30,6 +30,15 @@ Popup{
        onReturnClicked: function(){
        swipeView.setCurrentIndex(0)
        }
+       onNextClicked: function(){
+       swipeView.setCurrentIndex(2)
+       }
+       }
+       Policypage3{
+       id:policyNamePage3
+       onReturnClicked: function(){
+       swipeView.setCurrentIndex(1)
+       }
        }
 
         }
