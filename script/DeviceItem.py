@@ -49,7 +49,7 @@ class LinkItem(QGraphicsLineItem):
         super().__init__()
         self.setZValue(10)
         self.setOpacity(0.6)
-        self.linkPen.setWidth(4)
+        self.linkPen.setWidth(3)
         self.linkPen.setColor(Qt.darkBlue)
         self.setPen(self.linkPen)
         self.src = src

@@ -47,6 +47,8 @@ class TopoScene(QGraphicsScene):
                 self.links.append(newLink)
                 self.addItem(newLink)
     def buildGraph(self):
+        self.graph.clear()
+        if(len(self.devices)<1):return
         for deviceIndex in self.devices.keys():
             self.graph.add_node(deviceIndex)
         for link in self.links:
@@ -60,6 +62,32 @@ class TopoScene(QGraphicsScene):
         for linkItem  in self.links:
             linkItem.updateLine() 
             linkItem.update()
+    
+    def saveTopologie(self):
+        dect = {}
+        dect["name"] = self.name
+        i = 0
+        dect["devices"] = X
+        X = []
+        for index in self.devices.values():
+            dect2={}
+            dect2["id"]= i
+            dect2["username"] = index.device.username
+            dect2["password"] = index.device.password
+            dect2["secret"] = index.device.secret
+            dect2["ipAddr"] = index.device.ipAddr
+            dect2["os"] = index.device.os
+            dect2["neighbors"] = index.device.neighborsIds
+            X.append(dect2)
+        dect["devices"]=X
+
+        yaml.dump(dect)
+        # output file
+
+
+
+
+        pass
 
 
     #! deprecaed
