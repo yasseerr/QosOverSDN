@@ -47,6 +47,7 @@ class TopoScene(QGraphicsScene):
                 self.links.append(newLink)
                 self.addItem(newLink)
     def buildGraph(self):
+        self.graph.clear()
         for deviceIndex in self.devices.keys():
             self.graph.add_node(deviceIndex)
         for link in self.links:
@@ -60,6 +61,10 @@ class TopoScene(QGraphicsScene):
         for linkItem  in self.links:
             linkItem.updateLine() 
             linkItem.update()
+    
+    def saveTopologie(self):
+        #TODO save the topologie into yaml file 
+        pass
 
 
     #! deprecaed
