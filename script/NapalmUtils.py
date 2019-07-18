@@ -1,6 +1,7 @@
 from napalm import get_network_driver
 from napalm.ios import IOSDriver
 from script.Device import Device
+import json
 
 from script import Device
 

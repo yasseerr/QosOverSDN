@@ -48,6 +48,7 @@ class TopoScene(QGraphicsScene):
                 self.addItem(newLink)
     def buildGraph(self):
         self.graph.clear()
+        if(len(self.devices)<1):return
         for deviceIndex in self.devices.keys():
             self.graph.add_node(deviceIndex)
         for link in self.links:
