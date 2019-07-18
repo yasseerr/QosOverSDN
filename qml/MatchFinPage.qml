@@ -6,6 +6,8 @@ import QtQuick.Controls.Styles 1.4
 Item {
     property var interfaces: []
     property var destinationsMAC: []
+    property var onReturnClicked: function(){}
+
 
     id: root
     width: 640
@@ -111,7 +113,7 @@ Item {
                 color: rButton.hovered ? Qt.lighter("#1a1818") : "#1a1818"
             }
             onClicked: {
-
+                onReturnClicked()
                 //pingingPopup.open()
                 //dialogRef.onAddRouterClicked(adressInput.text,usernameInput.text,passwordInput.text,
                 //                             secretInput.text,osComboBox.currentText)
@@ -121,27 +123,63 @@ Item {
         ComboBox {
             id: osComboBoxInterface
             y: 88
-            width: 207
-            height: 42
+            width: 147
+            height: 40
             displayText: currentText
             anchors.left: matchInpytInterface.right
             anchors.leftMargin: 32
             anchors.topMargin: -30
             model: ["your Interface","FastEthernet","GigaEthernet"]
             anchors.top: matchInpytInterface.bottom
-        }
 
-        Tumbler {
-            id: tumbler1
-            anchors.right: parent.right
-            anchors.rightMargin: 188
-            anchors.left: parent.left
-            anchors.leftMargin: 391
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 310
-            anchors.top: parent.top
-            anchors.topMargin: 50
-            model: 10
+            Rectangle {
+                id: rectangle
+                x: 153
+                y: 9
+                width: 100
+                height: 40
+                color: "#ffffff"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+
+            Tumbler {
+                id: tumbler1
+                x: 632
+                y: 50
+                font.bold: true
+                font.pointSize: 10
+                focusPolicy: Qt.StrongFocus
+                anchors.verticalCenterOffset: 0
+                anchors.horizontalCenterOffset: 151
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+                model: 10
+            }
+
+            Tumbler {
+                id: tumbler2
+                x: 146
+                y: -38
+                width: 57
+                height: 200
+                font.bold: true
+                font.pointSize: 10
+                anchors.verticalCenterOffset: 0
+                anchors.verticalCenter: parent.verticalCenter
+                model: 10
+            }
+
+            Rectangle {
+                id: rectangle3
+                x: 228
+                y: 12
+                width: 1
+                height: 18
+                color: "#000000"
+                anchors.horizontalCenterOffset: -30
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: tumbler1.horizontalCenter
+            }
         }
 
         TextInput {
@@ -171,29 +209,6 @@ Item {
             anchors.left: parent.left
         }
 
-        Rectangle {
-            id: rectangle3
-            x: -2
-            width: 1
-            height: 18
-            color: "#000000"
-            anchors.top: parent.top
-            anchors.topMargin: 100
-            anchors.leftMargin: -15
-            anchors.left: tumbler1.right
-        }
-
-        Tumbler {
-            id: tumbler2
-            width: 60
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 310
-            anchors.top: parent.top
-            anchors.topMargin: 50
-            anchors.left: tumbler1.right
-            anchors.leftMargin: -30
-            model: 10
-        }
     }
 }
 
@@ -214,8 +229,11 @@ Item {
 
 
 
+
+
+
+
 /*##^## Designer {
-    D{i:8;anchors_x:200;anchors_y:156}D{i:9;anchors_height:127;anchors_width:60;anchors_x:430;anchors_y:43}
-D{i:10;anchors_x:305;anchors_y:159}D{i:12;anchors_y:-3}D{i:13;anchors_height:127;anchors_width:60;anchors_x:430;anchors_y:43}
+    D{i:12;anchors_x:228}D{i:8;anchors_x:200;anchors_y:156}D{i:14;anchors_y:"-3"}
 }
  ##^##*/

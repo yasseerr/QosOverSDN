@@ -43,14 +43,13 @@ class MainForm(QWidget):
 
         self.ui.menuWidget.rootContext().setContextProperty('mainForm',self)
         self.ui.topologieView.setRenderHint(QPainter.Antialiasing)
-        self.drawTopologie()
-        #self.ui.controleWidget.setVisible(False)
+        self.drawTopologie("topo1.yaml")
+        self.ui.controleWidget.setVisible(True)
         self.ui.controleWidget.rootContext().setContextProperty('mainForm', self)
         self.ui.controleWidget.rootContext().setContextProperty('classesModel', self._classesModel)
         self.ui.controleWidget.rootContext().setContextProperty('policiesModel', self._policiesModel)
-        self.ui.controleWidget.setSource(QUrl("qml/classification.qml"))
+        self.ui.controleWidget.setSource(QUrl("qml/Classification.qml"))
         self.ui.topologieView.setVisible(False)
-        
         self.topologyDialog = TopoDialog(self.topoScene.devices)
         
 
@@ -78,18 +77,28 @@ class MainForm(QWidget):
         self.ui.controleWidget.setVisible(True)
 
     @pyqtSlot()
-    def drawTopologie(self):
-        self.topoScene = TopoScene()
+    def displayAutoQos(self):
+        self.ui.topologieView.setVisible(False)
+        self.ui.controleWidget.setSource(QUrl("qml/AutoQos.qml"))
+        self.ui.controleWidget.setVisible(True)
+
+    @pyqtSlot(str)
+    def drawTopologie(self,topoFile):
+        self.topoScene = TopoScene("data/topologies/"+topoFile)
         self.ui.topologieView.setScene(self.topoScene)
-        #ToDO get the topologie object
-        linksArr = self.getObjectFromController("links")
-        #TODO create the devices and links
-        self.topoScene.createDevices(linksArr)
-        #TODO add the items to the library
+        self.displayTopologie()
+
+
     
     @pyqtSlot()
     def showTopoDialogue(self):
         self.topologyDialog.show()
+    
+    @pyqtSlot()
+    def openTopologieView(self):
+        self.ui.topologieView.setVisible(False)
+        self.ui.controleWidget.setSource(QUrl("qml/OpenTopologie.qml"))
+        self.ui.controleWidget.setVisible(True)
     
 
 

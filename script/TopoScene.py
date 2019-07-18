@@ -2,23 +2,94 @@ from PyQt5.QtCore import QUrl,QRectF,Qt
 from PyQt5.QtWidgets import QGraphicsScene,QGraphicsView
 from PyQt5.QtGui import QImage,QPixmap,QBrush,QColor
 from script.DeviceItem import DeviceItem,LinkItem
-
-
+from script.Device import Device
+import yaml
+import networkx as nx
 
 class TopoScene(QGraphicsScene):
-    def __init__(self):
+    def __init__(self,topoFile):
         super().__init__()
         self.bgImage = QImage("assets/bg_brush2.png")
         self.setBackgroundBrush(QBrush(self.bgImage))
         #self.setSceneRect(QRectF(0,0,600,600))
         #TODO initialise the items
-        dev1 = DeviceItem("test")
-        self.addItem(dev1)
-
         self.devices = {}
         self.links = []
+        self.name = "topologieName"
+        self.createDevicesFromYaml(topoFile)
+        self.createLinks()
+        self.graph = nx.Graph()
+        self.buildGraph()
+
+    def createDevicesFromYaml(self,fileName:str):
+        topoFile = open(fileName,'r')
+        topoDict = yaml.load(topoFile)
+        self.name = topoDict['name']
+        for deviceDict in topoDict["devices"]:
+            newDevice = Device(deviceDict)
+            newDeviceItem = DeviceItem(newDevice)
+            newDeviceItem.setPos(len(self.devices)*200,300)
+            self.devices[newDevice.id] = newDeviceItem
+            self.addItem(newDeviceItem)
+    
+    def createLinks(self):
+        for deviceItem in self.devices.values():
+            sourceDevice :DeviceItem  = deviceItem
+            for deviceIndex in sourceDevice.device.neighborsIds:
+                destinationDevice : DeviceItem = self.devices[deviceIndex]
+                if(sourceDevice.neighbors.__contains__(destinationDevice)): 
+                    continue
+                newLink : LinkItem = LinkItem(sourceDevice,destinationDevice)
+                sourceDevice.links.append(newLink)
+                destinationDevice.links.append(newLink)
+                sourceDevice.neighbors.append(destinationDevice)
+                destinationDevice.neighbors.append(sourceDevice)
+                self.links.append(newLink)
+                self.addItem(newLink)
+    def buildGraph(self):
+        self.graph.clear()
+        for deviceIndex in self.devices.keys():
+            self.graph.add_node(deviceIndex)
+        for link in self.links:
+            self.graph.add_edge(link.src.device.id, link.des.device.id)
+        positions = nx.kamada_kawai_layout(self.graph,scale=len(self.devices)*50)
+        for posKey in positions.keys():
+            thePosition = positions[posKey]
+            deviceI : DeviceItem = self.devices[posKey]
+            deviceI.setPos(thePosition[0],thePosition[1])
+            deviceI.update()
+        for linkItem  in self.links:
+            linkItem.updateLine() 
+            linkItem.update()
+    
+    def saveTopologie(self):
+        dect = {}
+        dect["name"] = self.name
+        i = 0
+        dect["devices"] = X
+        X = []
+        for index in self.devices.values():
+            dect2={}
+            dect2["id"]= i
+            dect2["username"] = index.device.username
+            dect2["password"] = index.device.password
+            dect2["secret"] = index.device.secret
+            dect2["ipAddr"] = index.device.ipAddr
+            dect2["os"] = index.device.os
+            dect2["neighbors"] = index.device.neighborsIds
+            X.append(dect2)
+        dect["devices"]=X
+
+        yaml.dump(dect)
+        # output file
 
 
+
+
+        pass
+
+
+    #! deprecaed
     def createDevices(self, linkList:list):
         for linkObj in linkList:
             src_name = linkObj["src-switch"]
