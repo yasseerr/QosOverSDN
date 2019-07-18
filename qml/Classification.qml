@@ -193,6 +193,8 @@ Rectangle {
 
 
 
+
+
 /*##^## Designer {
     D{i:0;autoSize:true;height:480;width:640}D{i:8;anchors_height:200;anchors_width:200}
 D{i:10;anchors_height:140;anchors_width:140;anchors_x:0;anchors_y:0}
