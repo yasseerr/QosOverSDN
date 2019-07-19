@@ -3,6 +3,7 @@ import QtQuick.Controls.Material 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Controls.Styles 1.4
 import "./"
+import Qt.labs.folderlistmodel 2.12
 Item {
     id:root
     //anchors.fill: parent
@@ -10,8 +11,10 @@ Item {
     ListView {
         id: filesListView
         x: 8
-        width: 180
-        height: 200
+        width: 304
+        clip: true
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 10
         anchors.top: parent.top
         anchors.topMargin: 50
         focus: true
@@ -26,7 +29,7 @@ Item {
             Rectangle{
                 anchors.fill: parent
                 color: delegateMA.containsMouse?"#aaaaaa":"#fff"
-                border.color: control.down ? "#17a81a" : "#21be2b"
+                border.color: delegateMA.containsMouse? "#17a81a" : "#21be2b"
 
             }
 
@@ -47,16 +50,10 @@ Item {
                     anchors.fill: parent
                     onClicked: {
                         //mainForm.drawTopologie(fileNameText.text)
-                        console.log("we are in the image baby !!!")
+                        mainForm.deleteTopologie(fileName)
                     }
                 }
             }
-
-
-
-
-
-
             MouseArea{
                 id : delegateMA
                 anchors.rightMargin: 30
@@ -70,27 +67,27 @@ Item {
                 id: row1
                 Text {
                     id: fileNameText
-                    text: name
+                    text: fileName
+                    padding: 5
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
                 }
             }
         }
         //TODO : Load files from Directory
-        model: ListModel {
-            ListElement {
-                name: "topo1.yaml"
-            }
+        model: folderModel
 
-            ListElement {
-                name: "topo2.yaml"
-            }
+        Rectangle {
+            id: rectangle
+            color: "#00ffffff"
+            border.width: 1
+            anchors.fill: parent
+        }
 
-            ListElement {
-                name: "topo3.yaml"
-            }
-
-            ListElement {
-                name: "topo4.yaml"
-            }
+        FolderListModel{
+            id: folderModel
+            nameFilters: ["*.yaml"]
+            folder: "../data/topologies"
         }
 
 
@@ -114,11 +111,11 @@ Item {
         Button {
             id: addFileButton
             width: 134
-            text: "New File.yaml"
+            text: "New Topologie"
             anchors.left: parent.left
             icon.source: "../assets/test.png"
             background: Rectangle {
-                color: addClassButton.hovered?"#ddd":"#fff"
+                color: addFileButton.hovered?"#ddd":"#fff"
                 anchors.fill: parent
             }
             icon.color: "#00000000"
@@ -137,52 +134,22 @@ Item {
     }
 
     Popup{
-        anchors.centerIn: parent
         id: rootbob
-        width: 150
+        x: 126
+        y: 0
+        width: 388
         height: 136
-
-
         visible: false
         clip: true
         modal: true
         padding: 4
         Rectangle {
             id: rootContent
-            y: 105
-            height: 150
             color: "#ee1c1a1a"
-            anchors.left: parent.left
-            anchors.leftMargin: 74
-            anchors.right: parent.right
-            anchors.rightMargin: 171
+            anchors.fill: parent
             opacity: 1
 
-            Text {
-                id: element1
-                width: 114
-                height: 14
-                color: "#ffffff"
-                text: qsTr("Name Of File :")
-                anchors.verticalCenterOffset: 0
-                anchors.horizontalCenterOffset: -110
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: 12
-            }
 
-            TextInput {
-                id: textInput
-                x: 177
-                y: 68
-                width: 80
-                height: 20
-                color: "#ffffff"
-                selectionColor: "#ffffff"
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: 12
-            }
 
             Rectangle {
                 id: rectangle2
@@ -191,10 +158,50 @@ Item {
                 width: 150
                 height: 2
                 color: "#ffffff"
-                anchors.verticalCenterOffset: 17
+                anchors.verticalCenterOffset: 13
                 anchors.horizontalCenterOffset: 0
-                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.horizontalCenter: fileNameInput.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
+            }
+
+
+            Text {
+                id: element1
+                width: 114
+                height: 14
+                color: "#ffffff"
+                text: qsTr("Name Of Topologie :")
+                anchors.left: parent.left
+                anchors.leftMargin: 20
+                anchors.verticalCenterOffset: 0
+                anchors.verticalCenter: parent.verticalCenter
+                font.pixelSize: 12
+            }
+
+            TextInput {
+                id: fileNameInput
+                y: 68
+                width: 150
+                height: 14
+                color: "#ffffff"
+                text: "test"
+                anchors.left: element1.right
+                anchors.leftMargin: 20
+                selectionColor: "#ffffff"
+                anchors.verticalCenter: parent.verticalCenter
+                font.pixelSize: 14
+            }
+
+            RoundButton {
+                id: roundButton
+                y: 222
+                width: 41
+                height: 41
+                text: "+"
+                anchors.left: fileNameInput.right
+                anchors.leftMargin: 10
+                anchors.verticalCenter: fileNameInput.verticalCenter
+                onClicked: mainForm.addTopologie(fileNameInput.text)
             }
         }
 
@@ -260,8 +267,23 @@ Item {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*##^## Designer {
-    D{i:0;autoSize:true;height:480;width:640}D{i:1;anchors_height:200;anchors_width:180;anchors_x:0;anchors_y:129}
-D{i:19;anchors_height:150;anchors_width:150;anchors_x:74;anchors_y:105}
+    D{i:0;autoSize:true;height:480;width:640}D{i:9;anchors_height:200;anchors_width:200}
+D{i:1;anchors_height:200;anchors_width:180;anchors_x:0;anchors_y:129}D{i:19;anchors_x:177}
+D{i:20;anchors_x:421}D{i:16;anchors_height:150;anchors_width:150;anchors_x:74;anchors_y:105}
 }
  ##^##*/
