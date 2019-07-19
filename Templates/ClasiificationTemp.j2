@@ -1,0 +1,8 @@
+enable
+ conf t
+ class-map {{clasification.Name}}
+  description {{clasification.description}}
+  match {{clasification.MatchAny_OR_All}}
+  {% for protocol in clasification.MatchProtocls %}
+    Match protocol {{clasification.protocol}}
+  {% endfor %}

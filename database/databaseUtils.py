@@ -30,10 +30,30 @@ def create_DB():
 
 
 def add_user(name:str,password:str):
+    T = False
     conn = sqlite3.connect("QosUsers")
     cursor = conn.cursor()
-    cursor.execute("insert into users VALUES (null,?,?) ",(name,password))
-    conn.commit()
+    cursor.execute("SELECT * FROM users where username = ? ", (name,))
+    data = cursor.fetchall()
+    if(len(data)==0):# if the username not exist
+        cursor.execute("insert into users VALUES (null,?,?) ",(name,password))
+        conn.commit()
+        T=True
+    return T
+
+
+def delete_user(name:str):
+    T = True
+    conn = sqlite3.connect("QosUsers")
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM users where username = ? ", (name,))
+    data = cursor.fetchall()
+    if(len(data)==0):
+        T=False
+    else:
+        cursor.execute("DELETE FROM users WHERE username = ?", (name,))
+        conn.commit()
+    return T
 
 
 

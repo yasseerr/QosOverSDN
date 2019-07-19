@@ -44,11 +44,10 @@ Item {
             width: 200
             height: 35
             color: "#f5f3f3"
+            anchors.horizontalCenter: adressInput.horizontalCenter
             anchors.verticalCenterOffset: 0
             font.bold: true
             anchors.verticalCenter: namelabel.verticalCenter
-            anchors.left: namelabel.right
-            anchors.leftMargin: 20
             horizontalAlignment: Text.AlignLeft
             font.underline: false
             selectionColor: "#00801c"
@@ -86,16 +85,15 @@ Item {
             width: 200
             height: 34
             color: "#f5f3f3"
+            anchors.horizontalCenter: adressInput.horizontalCenter
             echoMode: TextInput.Password
             anchors.top: usernameInput.bottom
             anchors.topMargin: 30
             anchors.verticalCenter: namelabel.verticalCenter
-            anchors.left: passwordlabel.right
             font.pixelSize: 17
             horizontalAlignment: Text.AlignLeft
             selectionColor: "#00801c"
             anchors.verticalCenterOffset: 68
-            anchors.leftMargin: 20
             font.bold: true
             Rectangle {
                 id: rectangle3
@@ -132,16 +130,14 @@ Item {
             width: 200
             height: 34
             color: "#f5f3f3"
-            anchors.top: passwordInput.bottom
+            anchors.verticalCenter: secretlabel.verticalCenter
+            anchors.horizontalCenter: adressInput.horizontalCenter
             echoMode: TextInput.Password
             font.bold: true
-            anchors.leftMargin: 20
             font.underline: false
-            anchors.left: passwordlabel.right
             font.pixelSize: 17
             horizontalAlignment: Text.AlignLeft
             selectionColor: "#00801c"
-            anchors.topMargin: 30
             Rectangle {
                 id: rectangle4
                 width: 165
@@ -214,17 +210,15 @@ Item {
             hoverEnabled: true
             display: AbstractButton.TextUnderIcon
             anchors.right: parent.right
-            anchors.rightMargin: 100
+            anchors.rightMargin: 50
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 100
+            anchors.bottomMargin: 50
             background: Rectangle {
                 anchors.fill: parent
                 color: nextButton.hovered?Qt.lighter("#1a1818"):"#1a1818"
             }
             onClicked : {
                 pingingPopup.open()
-                dialogRef.onAddRouterClicked(adressInput.text,usernameInput.text,passwordInput.text,
-                                             secretInput.text,osComboBox.currentText)
             }
         }
 
@@ -236,7 +230,7 @@ Item {
             displayText: "OS : "+currentText
             model: ["ios","iosxr","junos","eos","nxos"]
             anchors.top: adressInput.bottom
-            anchors.topMargin: 20
+            anchors.topMargin: 30
 
         }
 
@@ -245,8 +239,26 @@ Item {
     }
     LoadingPopup{
         id:pingingPopup
+        onAboutToShow: {
+            dialogRef.onAddRouterClicked(adressInput.text,usernameInput.text,passwordInput.text,
+                                         secretInput.text,osComboBox.currentText)
+        }
+    }
+
+    Connections{
+        target: dialogRef
+        onConnectRespenseSig:{
+            pingingPopup.waitingEnded(ret)
+            pingingPopup.close()
+        }
     }
 }
+
+
+
+
+
+
 
 
 

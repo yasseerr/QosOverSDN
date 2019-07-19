@@ -16,6 +16,8 @@ from script.models.QosPoliciesModel import QosPoliciesModel
 
 import requests
 import json
+import yaml
+import os
 import random
 
 
@@ -49,7 +51,6 @@ class MainForm(QWidget):
         self.ui.controleWidget.rootContext().setContextProperty('policiesModel', self._policiesModel)
         self.ui.controleWidget.setSource(QUrl("qml/Classification.qml"))
         self.ui.topologieView.setVisible(False)
-        self.topologyDialog = TopoDialog(self.topoScene)
         
 
 
@@ -81,10 +82,19 @@ class MainForm(QWidget):
         self.ui.controleWidget.setSource(QUrl("qml/AutoQos.qml"))
         self.ui.controleWidget.setVisible(True)
 
+
+    @pyqtSlot()
+    def displayServicePolicing(self):
+        self.ui.topologieView.setVisible(False)
+        self.ui.controleWidget.setSource(QUrl("qml/ServicePolicing.qml"))
+        self.ui.controleWidget.setVisible(True)
+
     @pyqtSlot(str)
     def drawTopologie(self,topoFile):
         self.topoScene = TopoScene("data/topologies/"+topoFile)
         self.ui.topologieView.setScene(self.topoScene)
+        self.topologyDialog = TopoDialog(self.topoScene)
+        self.topologyDialog.topologieScene = self.topoScene
         self.displayTopologie()
 
 
@@ -98,6 +108,20 @@ class MainForm(QWidget):
         self.ui.topologieView.setVisible(False)
         self.ui.controleWidget.setSource(QUrl("qml/OpenTopologie.qml"))
         self.ui.controleWidget.setVisible(True)
+
+    @pyqtSlot(str)
+    def addTopologie(self,filename):
+        f = open("data/topologies/"+filename+".yaml",'w')
+        init_obj = {"name":filename,"devices":[]}
+        f.write(yaml.dump(init_obj))
+        f.close()
+        self.drawTopologie(filename+".yaml")
+    
+    @pyqtSlot(str)
+    def deleteTopologie(self, filename):
+        fileP = "data/topologies/"+filename
+        os.remove(fileP)
+    
     
 
 
