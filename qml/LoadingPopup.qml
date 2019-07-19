@@ -37,5 +37,19 @@ Popup{
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
     }
+    ColorAnimation {
+        property string thecolor: "#00ff00"
+        id : returnColorAnimation
+        target: ping_rectangle
+        property: "color"
+        from: "white"
+        to: thecolor
+        duration: 400
+        onFinished: pingingPopup.close()
+    }
+    function waitingEnded(ret){
+        returnColorAnimation.thecolor = ret==1?"#00ff00":"#ff0000"
+        returnColorAnimation.start();
+    }
 
 }

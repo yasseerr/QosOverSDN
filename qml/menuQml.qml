@@ -44,14 +44,14 @@ Item {
             width: scrollView.width
             height: childrenRect.height
             MenuItem_Q{
-                title: "Topologio"
+                title: "Topologie"
                 subItems: ["Display Topologie","Add Router","Open Topologie"]
                 subItemsFunctions:[displayTopologie,addRouter,openTopologieView]
             }
             MenuItem_Q{
                 title: "Quality Of Service"
-                subItems: ["Classification","Policing,shaping, Gestion du congestion","Service policy"]
-                subItemsFunctions:[displayClassification,displayPolicing,exit_from_item,exit_from_item]
+                subItems: ["Classification","Policing","Service policing"]
+                subItemsFunctions:[displayClassification,displayPolicing,displayServicePolicing]
             }
             MenuItem_Q{
                 title: "AutoQos"
@@ -86,6 +86,10 @@ Item {
     function displayAutoQos(){
         mainForm.displayAutoQos()
     }
+    function displayServicePolicing(){
+        mainForm.displayServicePolicing()
+    }
+
 }
 
 

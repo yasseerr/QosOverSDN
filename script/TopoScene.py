@@ -67,11 +67,11 @@ class TopoScene(QGraphicsScene):
         dect = {}
         dect["name"] = self.name
         i = 0
-        dect["devices"] = X
         X = []
+        dect["devices"] = X
         for index in self.devices.values():
             dect2={}
-            dect2["id"]= i
+            dect2["id"]= index.device.id
             dect2["username"] = index.device.username
             dect2["password"] = index.device.password
             dect2["secret"] = index.device.secret
@@ -81,7 +81,10 @@ class TopoScene(QGraphicsScene):
             X.append(dect2)
         dect["devices"]=X
 
-        yaml.dump(dect)
+        yamlStr = yaml.dump(dect)
+        f = open("data/topologies/"+self.name+".yaml",'w')
+        f.write(yamlStr) 
+        f.close()
         # output file
 
 
