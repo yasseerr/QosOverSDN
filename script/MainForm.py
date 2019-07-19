@@ -81,6 +81,13 @@ class MainForm(QWidget):
         self.ui.controleWidget.setSource(QUrl("qml/AutoQos.qml"))
         self.ui.controleWidget.setVisible(True)
 
+
+    @pyqtSlot()
+    def displayServicePolicing(self):
+        self.ui.topologieView.setVisible(False)
+        self.ui.controleWidget.setSource(QUrl("qml/ServicePolicing.qml"))
+        self.ui.controleWidget.setVisible(True)
+
     @pyqtSlot(str)
     def drawTopologie(self,topoFile):
         self.topoScene = TopoScene("data/topologies/"+topoFile)

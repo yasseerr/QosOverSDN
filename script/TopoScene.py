@@ -64,7 +64,29 @@ class TopoScene(QGraphicsScene):
             linkItem.update()
     
     def saveTopologie(self):
-        #TODO save the topologie into yaml file 
+        dect = {}
+        dect["name"] = self.name
+        i = 0
+        dect["devices"] = X
+        X = []
+        for index in self.devices.values():
+            dect2={}
+            dect2["id"]= i
+            dect2["username"] = index.device.username
+            dect2["password"] = index.device.password
+            dect2["secret"] = index.device.secret
+            dect2["ipAddr"] = index.device.ipAddr
+            dect2["os"] = index.device.os
+            dect2["neighbors"] = index.device.neighborsIds
+            X.append(dect2)
+        dect["devices"]=X
+
+        yaml.dump(dect)
+        # output file
+
+
+
+
         pass
 
 
