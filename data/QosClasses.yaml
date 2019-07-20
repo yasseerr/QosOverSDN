@@ -1,31 +1,11 @@
----
-- name : class1
-  color : '#336699'
-  policies : 
-    - name : pol1
-    - name : pol2
-    - name : pol3
-- name : class2
-  color : '#86BBD8'
-  policies : 
-    - name : pol1
-    - name : pol2
-    - name : pol3
-- name : class3
-  color : '#2F4858'
-  policies : 
-    - name : pol1
-    - name : pol2
-    - name : pol3
-- name : class4
-  color : '#9EE493'
-  policies : 
-    - name : pol1
-    - name : pol2
-    - name : pol3
-- name : class5
-  color : '#DAF7DC'
-  policies : 
-    - name : pol1
-    - name : pol2
-    - name : pol3
+- color: '#336699'
+  description: match-any
+  dscp: af11
+  interfaceIndex1: 2
+  interfaceIndex2: 1
+  interfaceType: FastEthernet
+  macAddr: '123'
+  match: description
+  name: firstClass
+  precedence: IP
+  protocoles: [icmp, rip]

@@ -152,9 +152,9 @@ Item{
             width: 200
             height: 38
             color: "#f5f3f3"
+            anchors.horizontalCenter: classNameTextEdit.horizontalCenter
             selectionColor: "#00801c"
             anchors.verticalCenter: discription.verticalCenter
-            anchors.leftMargin: 20
             font.underline: false
             horizontalAlignment: Text.AlignLeft
             font.bold: true
@@ -169,7 +169,6 @@ Item{
                 anchors.top: parent.top
                 anchors.left: parent.left
             }
-            anchors.left: discription.right
             anchors.verticalCenterOffset: 10
         }
     }

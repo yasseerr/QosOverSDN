@@ -89,28 +89,15 @@ Rectangle {
             anchors.fill: parent
             anchors.margins: 10
             model : classesModel
-            delegate: Item {
-                id: element
-                x: 5
-                height: 170
-                width: 170
-                Component.onCompleted : console.log(classColor)
-                Rectangle {
-                    id : backgroundRect
-                    anchors.fill: parent
-                    color: classColor
-                    border.width: 1
-                    opacity: 0.8
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                Text {
-                    text: name
-                    anchors.verticalCenter: parent.verticalCenter
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    font.bold: true
-                }
-
+            delegate: QosClassDelegate{
+                name_p:name
+                color_p :classColor
+                description_p:description
+                match_p: match
+                protocoles_p: protocoles
+                precedence_p:  precedence
+                interfeace_p: interfaceRole
+                mac_p: mac
             }
 
             cellHeight: 180

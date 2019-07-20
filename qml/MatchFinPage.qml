@@ -4,9 +4,12 @@ import QtQuick.Controls 2.12
 import QtQuick.Controls.Styles 1.4
 
 Item {
-    property var interfaces: []
-    property var destinationsMAC: []
+    property string interfaceType : comboBoxInterface.currentText
+    property int index1: tumbler1.currentIndex
+    property int index2: tumbler2.currentIndex
+    property string destinationsMAC:  textInputAddMac.text
     property var onReturnClicked: function(){}
+    property var onFinishClicked: function(){}
 
 
     id: root
@@ -53,7 +56,7 @@ Item {
         }
 
         Button {
-            id: nextButton
+            id: finishButton
             x: 440
             y: 370
             width: 100
@@ -76,13 +79,10 @@ Item {
             anchors.bottomMargin: 60
             background: Rectangle {
                 anchors.fill: parent
-                color: nextButton.hovered ? Qt.lighter("#1a1818") : "#1a1818"
+                color: finishButton.hovered ? Qt.lighter("#1a1818") : "#1a1818"
             }
             onClicked: {
-
-                //pingingPopup.open()
-                //dialogRef.onAddRouterClicked(adressInput.text,usernameInput.text,passwordInput.text,
-                //                             secretInput.text,osComboBox.currentText)
+                onFinishClicked()
             }
         }
 
@@ -121,7 +121,7 @@ Item {
         }
 
         ComboBox {
-            id: osComboBoxInterface
+            id: comboBoxInterface
             y: 88
             width: 147
             height: 40
@@ -129,7 +129,7 @@ Item {
             anchors.left: matchInpytInterface.right
             anchors.leftMargin: 32
             anchors.topMargin: -30
-            model: ["your Interface","FastEthernet","GigaEthernet"]
+            model: ["FastEthernet","GigaEthernet"]
             anchors.top: matchInpytInterface.bottom
 
             Rectangle {
@@ -137,8 +137,9 @@ Item {
                 x: 153
                 y: 9
                 width: 100
-                height: 40
+                height: 54
                 color: "#ffffff"
+                radius: 3
                 anchors.verticalCenter: parent.verticalCenter
             }
 
@@ -146,6 +147,9 @@ Item {
                 id: tumbler1
                 x: 632
                 y: 50
+                width: 60
+                height: 54
+                visibleItemCount: 3
                 font.bold: true
                 font.pointSize: 10
                 focusPolicy: Qt.StrongFocus
@@ -161,7 +165,8 @@ Item {
                 x: 146
                 y: -38
                 width: 57
-                height: 200
+                height: 54
+                visibleItemCount: 3
                 font.bold: true
                 font.pointSize: 10
                 anchors.verticalCenterOffset: 0
@@ -184,16 +189,20 @@ Item {
 
         TextInput {
             id: textInputAddMac
+            y: 168
             width: 221
             height: 36
             color: "#ffffff"
-            text: qsTr("|")
+            text: qsTr("")
+            anchors.verticalCenterOffset: 9
+            anchors.verticalCenter: destationAddress.verticalCenter
+            horizontalAlignment: Text.AlignHCenter
             font.family: "Times New Roman"
             anchors.left: parent.left
-            anchors.leftMargin: 305
-            anchors.top: osComboBoxInterface.bottom
-            anchors.topMargin: 30
-            font.pixelSize: 12
+            anchors.leftMargin: 296
+            anchors.top: comboBoxInterface.bottom
+            anchors.topMargin: 40
+            font.pixelSize: 20
         }
 
         Rectangle {
@@ -211,6 +220,12 @@ Item {
 
     }
 }
+
+
+
+
+
+
 
 
 

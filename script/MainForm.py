@@ -44,7 +44,7 @@ class MainForm(QWidget):
         self._policiesModel = QosPoliciesModel(self)
         self.ui.menuWidget.rootContext().setContextProperty('mainForm',self)
         self.ui.topologieView.setRenderHint(QPainter.Antialiasing)
-        self.drawTopologie("topo3.yaml")
+        self.drawTopologie("topo1.yaml")
         self.ui.controleWidget.setVisible(True)
         self.ui.controleWidget.rootContext().setContextProperty('mainForm', self)
         self.ui.controleWidget.rootContext().setContextProperty('classesModel', self._classesModel)

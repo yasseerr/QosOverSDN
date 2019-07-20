@@ -6,6 +6,7 @@ import QtQuick.Layouts 1.3
 import "./"
 
 Popup{
+//    property var classModelRef: null
     id: root
     width: 640
     height: 480
@@ -24,26 +25,30 @@ Popup{
         }
         MatchPage{
             id:matchPage
-            onNextClicked:function(){
-               /* console.log(classNamePage.qosClassName)
-                console.log(classNamePage.description)
-                console.log(classNamePage.theMatch)
-                for(var i=0;i < protocoles.count; i++){
-                    console.log(protocoles.get(i).protocole+" "+protocoles.get(i).precedence)
-                }
-                protocoles.clear()
-                root.close()*/
-                swipeView.setCurrentIndex(2)
-
-            }
             onReturnClicked: function(){
                  swipeView.setCurrentIndex(0)
+            }
+            onNextClicked: function(){
+                swipeView.setCurrentIndex(2)
             }
         }
         MatchFinPage{
             id:matchFinPage
             onReturnClicked: function(){
                  swipeView.setCurrentIndex(1)
+            }
+            onFinishClicked:function(){
+                var protocolesList = []
+                for(var i=0;i< matchPage.protocoles.count;i++){
+                    protocolesList.push(matchPage.protocoles.get(i).protocole)
+                }
+                classesModel.addQosClass(classNamePage.qosClassName,classNamePage.theMatch,classNamePage.description,
+                                       protocolesList,matchPage.precedence,matchPage.dscp,
+                                       matchFinPage.interfaceType,matchFinPage.index1,matchFinPage.index2,matchFinPage.destinationsMAC)
+                matchPage.protocoles.clear()
+                root.close()
+                swipeView.setCurrentIndex(2)
+
             }
         }
     }

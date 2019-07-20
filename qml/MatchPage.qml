@@ -6,8 +6,10 @@ import QtQuick.Controls.Styles 1.4
 Item {
 
     property alias protocoles : addedListView.model
+    property alias precedence : precedenceComboBox.selectedPrecedence
+    property alias dscp : comboBoxIPDscp.selectedDscp
     property var onNextClicked: function(){}
-     property var onReturnClicked: function(){}
+    property var onReturnClicked: function(){}
 
     id: root
     width: 640
@@ -89,13 +91,12 @@ Item {
             id: protocoleComboBox
             y: 88
             width: 182
-            height: 30
+            height: 32
             anchors.verticalCenter: matchProtocol.verticalCenter
             displayText:currentText
             anchors.left: matchProtocol.right
             anchors.leftMargin: 6
             model: [
-                "",
                 "arp     IP ARP",
                 "bgp     Border Gateway Protocol",
                 "cdp     Cisco Discovery Protocol",
@@ -121,11 +122,12 @@ Item {
         }
 
         ComboBox {
+            property string selectedPrecedence: currentText.split(" ")[0]
             id: precedenceComboBox
             x: 167
             y: 88
             width: 188
-            height: 30
+            height: 32
             anchors.verticalCenter: passwordlabel.verticalCenter
             anchors.leftMargin: 0
             displayText:currentText
@@ -146,7 +148,7 @@ Item {
             id: addedListView
             spacing: 0
             anchors.left: protocoleComboBox.right
-            anchors.leftMargin: 125
+            anchors.leftMargin: 86
             anchors.top: parent.top
             anchors.topMargin: 54
             anchors.bottom: nextButton.top
@@ -201,12 +203,9 @@ Item {
             anchors.topMargin: 85
             onClicked: {
                 var addedMatch = {
-                    "protocole" :protocoleComboBox.currentText.split(" ")[0],
-                    "precedence" :precedenceComboBox.currentText.split(" ")[0]
+                    "protocole" :protocoleComboBox.currentText.split(" ")[0]
                 }
                 addedListView.model.append(addedMatch)
-                addedListView.model.sync()
-
             }
         }
 
@@ -246,7 +245,7 @@ Item {
             id: classmap
             x: -9
             color: "#ffffff"
-            text: qsTr("Match IP dhcp  :")
+            text: qsTr("Match IP dscp  :")
             anchors.left: parent.left
             font.pixelSize: 16
             anchors.top: passwordlabel.bottom
@@ -257,12 +256,12 @@ Item {
         }
 
         ComboBox {
-            id: osComboBoxIPDscp
+            property string selectedDscp: currentText.split(" ")[0]
+            id: comboBoxIPDscp
             x: 206
             width: 207
-            height: 42
+            height: 36
             model: [
-            "IPDSCP",
            "af11     Match packets with AF11 dscp (001010)",
           "af12     Match packets with AF12 dscp (001100)",
           "af13     Match packets with AF13 dscp (001110)",,
@@ -286,7 +285,7 @@ Item {
                 "ef       Match packets with EF dscp (101110)"]
             anchors.left: classmap.right
             anchors.top: precedenceComboBox.bottom
-            anchors.topMargin: 72
+            anchors.topMargin: 78
             displayText: currentText
             anchors.leftMargin: 25
         }
@@ -312,6 +311,12 @@ Item {
     }
 
 }
+
+
+
+
+
+
 
 
 
