@@ -95,34 +95,29 @@ Rectangle {
             anchors.fill: parent
             anchors.margins: 10
             model : policiesModel
-            delegate: Item {
-                id: element
-                x: 5
-                height: 170
-                width: 170
-                Component.onCompleted : console.log(policyColor)
-                Rectangle {
-                    id : backgroundRect
-                    anchors.fill: parent
-                    color: policyColor
-                    border.width: 1
-                    opacity: 0.8
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
-                Text {
-                    text: name
-                    anchors.verticalCenter: parent.verticalCenter
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    font.bold: true
-                }
-
+            delegate:QosPolicyDelegate{
+                name_p: name
+                description_p: description
+                className_p: className
+                bandwidthKb_p: bandwidthKb
+                bandwidthPercent_p: bandwidthPercent
+                bandwidthRemaining_p: bandwidthRemaining
+                precedence_p: precedence
+                dscp_p: dscp
             }
-
             cellHeight: 180
             cellWidth: 180
         }
 
+    }
+    Connections{
+        target: policiesModel
+        onUpdateModelSig:{
+            gridView.model = 0
+            gridView.update()
+            gridView.model = policiesModel
+            gridView.update()
+        }
     }
 
 

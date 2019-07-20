@@ -4,9 +4,10 @@ import QtQuick.Controls 2.12
 import QtQuick.Controls.Styles 1.4
 
 Item {
-    property var interfaces: []
-    property var destinationsMAC: []
+    property var precedence:precedenceComboBox.currentText.length>0?precedenceComboBox.currentText.split(" ")[0]:""
+    property var dscp: comboBoxIPDscp.currentText.length>0?comboBoxIPDscp.currentText.split(" ")[0]:""
     property var onReturnClicked: function(){}
+    property var onFinishClicked: function(){}
 
 
     id: root
@@ -25,7 +26,7 @@ Item {
         anchors.fill: parent
 
         Button {
-            id: nextButton
+            id: finishButton
             x: 440
             y: 370
             width: 100
@@ -48,13 +49,10 @@ Item {
             anchors.bottomMargin: 60
             background: Rectangle {
                 anchors.fill: parent
-                color: nextButton.hovered ? Qt.lighter("#1a1818") : "#1a1818"
+                color: finishButton.hovered ? Qt.lighter("#1a1818") : "#1a1818"
             }
             onClicked: {
-
-                //pingingPopup.open()
-                //dialogRef.onAddRouterClicked(adressInput.text,usernameInput.text,passwordInput.text,
-                //                             secretInput.text,osComboBox.currentText)
+                onFinishClicked()
             }
         }
 
@@ -107,8 +105,8 @@ Item {
                 text: qsTr(" Set Precedence :")
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: parent.left
-                horizontalAlignment: Text.AlignHCenter
-                anchors.top: matchProtocol.bottom
+                //horizontalAlignment: Text.AlignHCenter
+                //anchors.top: matchProtocol.bottom
                 font.pixelSize: 16
                 anchors.topMargin: 50
                 anchors.leftMargin: 20
@@ -123,7 +121,7 @@ Item {
                 height: 30
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenterOffset: 2
-                model: ["IP Precedence",
+                model: ["",
                     "critical        Match packets with critical precedence (5",
                     "routine         Match packets with routine precedence (0)",
                     "network         Match packets with network control precedence (7)",
@@ -143,7 +141,7 @@ Item {
                 width: 128
                 height: 21
                 color: "#ffffff"
-                text: qsTr("Set dhcp  :")
+                text: qsTr("Set DSCP  :")
                 anchors.left: parent.left
                 anchors.leftMargin: 20
                 anchors.verticalCenterOffset: 81
@@ -154,7 +152,7 @@ Item {
             }
 
             ComboBox {
-                id: osComboBoxIPDscp
+                id: comboBoxIPDscp
                 x: 206
                 width: 188
                 height: 30
@@ -162,7 +160,7 @@ Item {
                 anchors.verticalCenterOffset: 0
                 anchors.verticalCenter: classmap.verticalCenter
                 model: [
-                        "IPDSCP",
+                        "",
                        "af11     Match packets with AF11 dscp (001010)",
                       "af12     Match packets with AF12 dscp (001100)",
                       "af13     Match packets with AF13 dscp (001110)",,
@@ -189,6 +187,12 @@ Item {
         }
     }
 }
+
+
+
+
+
+
 
 
 
