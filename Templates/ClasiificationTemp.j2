@@ -1,10 +1,33 @@
-enable
- conf t
- class-map {{clasification.Name}}
-  description {{clasification.description}}
-  match {{clasification.MatchAny_OR_All}}
-  {% for protocol in clasification.MatchProtocls %}
-    Match protocol {{protocol}}
-  {% endfor %}
-  match ip precedence {{clasification.Precedence}}
-  match ip dscp {{clasification.DSCP}}
+{% if clasification.name != "" %}
+class-map {{clasification.name}}
+
+{% if clasification.description != "" %}
+ description {{clasification.description}}
+ {% endif %}
+ {% if clasification.match != "" %}
+ match {{clasification.match}}
+
+
+ {% for protoco in clasification.protocoles %}
+ {% if protoco != "" %}
+ Match protocol {{protoco}}
+ {% endif %}
+ {% endfor %}
+
+ {% if clasification.precedence != "" %}
+ match ip precedence {{clasification.precedence}}
+  {% endif %}
+ {% if clasification.dscp != "" %}
+ match ip dscp {{clasification.dscp}}
+ {% endif %}
+
+
+ {% if (clasification.interfaceType != "") and (clasification.interfaceIndex1 != "") and (clasification.interfaceIndex2 != "") %}
+
+ match input-intrface {{clasification.interfaceType}}{{clasification.interfaceIndex1}}/{{clasification.interfaceIndex2}}
+ {% endif%}
+ {% if clasification.macAddr != "" %}
+ match destination-address {{clasification.macAddr}}
+ {% endif%}
+ {% endif %}
+{% endif %}

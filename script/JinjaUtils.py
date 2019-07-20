@@ -1,6 +1,7 @@
 from jinja2 import Environment, FileSystemLoader
 from NapalmUtils import send_config_file
 from Device import Device
+from script.models.QosClassModel import QosClass
 def autoQosJija(interface_name,NB1,NB2,nameOfAllpolicys):
     file_loader = FileSystemLoader('./../Templates')
 
@@ -22,19 +23,42 @@ def autoQosJija(interface_name,NB1,NB2,nameOfAllpolicys):
 
 
 
-def Classification(Name,MatchAny_OR_All,description,MatchProtocls,Precedence,DSCP):
+def classification(clasificationObjet : QosClass):
     file_loader = FileSystemLoader('./../Templates')
     env = Environment(loader=file_loader)
     # TODO lien nta3 AutoQosTempl
     template = env.get_template('ClasiificationTemp.j2')
 
-    clasification_dict = {"Name":Name, "description": description, "MatchAny_OR_All": MatchAny_OR_All,
-                    "MatchProtocls": MatchProtocls,
-                    "Precedence": Precedence,
-                    "DSCP":DSCP
-                    }
-    output = template.render(clasification=clasification_dict)
-    return output
+    # clasification_dict = {"Name":Name, "description": description, "MatchAny_OR_All": MatchAny_OR_All,
+    #                 "MatchProtocls": MatchProtocls,
+    #                 "Precedence": Precedence,
+    #                 "DSCP":DSCP
+    #                 }
+    output = template.render(clasification=clasificationObjet.get_dict())
+    f = open("temp.cfg", 'w')
+    f.write(output)
+
+    f.close()
+    f = open("temp.cfg",'r')
+    f.read()
+    f.close()
+qos = QosClass({'name': "name",
+            'description':"description",
+            'match': "match",
+            'protocoles':['s','s'],
+            'precedence':"precedence",
+            'dscp':"dscp",
+            'interfaceType': "interfaceType",
+            'interfaceIndex1':"interfaceIndex1",
+            'interfaceIndex2': "interfaceIndex2",
+            'macAddr': "macAddr",
+            'color': "classColor"
+                    })
+classification(qos)
+
+
+
+
 #print(Classification("nameclass","disc","any",["a","ad","v","v"],5,"af11"))
 
 
@@ -68,4 +92,4 @@ def servicePolicyJija(interface_name,n1,n2,inout_put,nameOfpolicy):
     output = template.render(servicePolicing = servicePolicing_dict)
     return output
 
-print(servicePolicyJija("g",2,3,"input","r"))
+#print(servicePolicyJija("g",2,3,"input","r"))

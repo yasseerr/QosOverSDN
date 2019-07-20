@@ -1,8 +1,23 @@
-policy-map {{policing.Name}}
+policy-map {{policing.name}}
+
+{% if policing.description != "" %}
 description {{policing.description}}
-class {{policing.Class_Map_Name}}
-bandwidth {{policing.BandwithKPS}}
+{%endif%}
+{% if policing.classname!= "" %}
+class {{policing.className}}
+
+{% if policing.bandwithKb != "-1" %}
+bandwidth {{policing.bandwithKb}}
+{% endif %}
+{% if policing.bandwidthPercent != "-1" %}
 bandwidth percent {{policing.bandwidthPercent}}
+{% endif %}
+{% if policing.bandwidthRemaining != "-1" %}
 bandwidth remaining {{policing.bandwidthRemaining}}
-set ip precedence {{policing.ipprecedence}}
-set ip dscp {{policing.ipdscp}}
+{% endif %}
+{% if policing.precedence %}
+set ip precedence {{policing.precedence}}
+{% endif %}
+{% if policing.dscp != "" %}
+set ip dscp {{policing.dscp}}
+{% endif %}
