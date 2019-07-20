@@ -4,5 +4,7 @@ enable
   description {{clasification.description}}
   match {{clasification.MatchAny_OR_All}}
   {% for protocol in clasification.MatchProtocls %}
-    Match protocol {{clasification.protocol}}
+    Match protocol {{protocol}}
   {% endfor %}
+  match ip precedence {{clasification.Precedence}}
+  match ip dscp {{clasification.DSCP}}
