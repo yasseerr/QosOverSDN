@@ -98,6 +98,11 @@ Rectangle {
                 precedence_p:  precedence
                 interfeace_p: interfaceRole
                 mac_p: mac
+                applyClass: function(){
+                    applyToRouter.open()
+                    applyToRouter.anchors.centerIn = rootRectangle
+                    applyToRouter.className = name_p
+                }
             }
 
             cellHeight: 180
@@ -110,6 +115,17 @@ Rectangle {
         id : addClassPupup
         anchors.centerIn: parent
     }
+    SelectRouterPopup{
+        property string className: ""
+        id:applyToRouter
+        visible: false
+
+        applyToRouterFunc: function(){
+            mainForm.applyClassificaionToRouter(deviceId,className)
+        }
+
+    }
+
 
 
     /*TODO refresh classes list when created l*/
@@ -134,6 +150,8 @@ Rectangle {
     }
 
 }
+
+
 
 
 

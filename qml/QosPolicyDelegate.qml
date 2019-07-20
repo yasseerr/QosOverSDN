@@ -12,6 +12,9 @@ Item {
     property string dscp_p: "Not Defined"
     property string color_p: "#336699"
 
+
+    property var applyPolicy: function(){}
+
     id: element
     x: 5
     height: 170
@@ -20,7 +23,7 @@ Item {
     Rectangle {
         id : backgroundRect
         anchors.fill: parent
-        color: color_p
+        color: policyMA.containsMouse?Qt.lighter(color_p):color_p
         border.width: 1
         opacity: 0.8
         anchors.horizontalCenter: parent.horizontalCenter
@@ -86,6 +89,12 @@ Item {
                 text: dscp_p
             }
         }
+    }
+    MouseArea{
+        id: policyMA
+        anchors.fill: parent
+        hoverEnabled: true
+        onClicked: applyPolicy()
     }
 
 }

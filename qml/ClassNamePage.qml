@@ -10,7 +10,7 @@ Item{
 
     property alias qosClassName: classNameTextEdit.text
     property alias description: descriptionTextEdit.text
-    property string theMatch: radioButtonAll.checked?"match-all":"match-any"
+    property string theMatch: radioButtonAll.checked?"all":"any"
 
     id : root
     width: 640

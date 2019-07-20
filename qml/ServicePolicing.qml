@@ -37,13 +37,13 @@ Rectangle {
         x: 243
         y: 156
         width: 202
-        height: 40
+        height: 34
         font.pointSize: 10
         font.bold: true
         focusPolicy: Qt.NoFocus
         anchors.verticalCenterOffset: 0
         anchors.verticalCenter: matchInpytInterface.verticalCenter
-        model: ["FastEthernet","GigaEthernet"]
+        model: ["FastEthernet","GigaEthernet","Serial"]
         displayText: currentText
         Rectangle {
             id: rectangle
@@ -118,19 +118,19 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
 
         RadioButton {
-            id: control
+            id: inputcontrol
             width: 131
             height: 38
             text: qsTr("RadioButton")
             checkable: true
             anchors.left: parent.left
             anchors.leftMargin: 0
-            checked: false
+            checked: true
 
             indicator: Rectangle {
                 implicitWidth: 26
                 implicitHeight: 26
-                x: control.leftPadding
+                x: inputcontrol.leftPadding
                 y: parent.height / 2 - height / 2
                 radius: 13
                 border.color: "#000000"
@@ -142,13 +142,13 @@ Rectangle {
                     x: 6
                     y: 6
                     radius: 7
-                    visible: control.checked
+                    visible: inputcontrol.checked
                 }
             }
 
             contentItem: Text {
                 color: "#020202"
-                font: control.font
+                font: inputcontrol.font
                 opacity: enabled ? 1.0 : 0.3
                 text: "INPUTE"
 
@@ -158,12 +158,12 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 verticalAlignment: Text.AlignVCenter
-                leftPadding: control.indicator.width + control.spacing
+                leftPadding: inputcontrol.indicator.width + inputcontrol.spacing
             }
         }
 
         RadioButton {
-            id: control1
+            id: outpucontrol
             x: 1
             y: 44
             width: 131
@@ -176,17 +176,17 @@ Rectangle {
 
                 opacity: enabled ? 1.0 : 0.3
                 anchors.verticalCenter: parent.verticalCenter
-                leftPadding: control1.indicator.width + control1.spacing
+                leftPadding: outpucontrol.indicator.width + outpucontrol.spacing
                 anchors.horizontalCenter: parent.horizontalCenter
                 styleColor: "#090000"
                 verticalAlignment: Text.AlignVCenter
-                font: control1.font
+                font: outpucontrol.font
 
                 style: Text.Normal
             }
             checked: false
             indicator: Rectangle {
-                x: control1.leftPadding
+                x: outpucontrol.leftPadding
                 y: parent.height / 2 - height / 2
                 radius: 13
                 implicitWidth: 26
@@ -199,7 +199,7 @@ Rectangle {
                     height: 14
                     color: "#000000"
                     radius: 7
-                    visible: control1.checked
+                    visible: outpucontrol.checked
                 }
             }
             anchors.leftMargin: 0
@@ -238,7 +238,8 @@ Rectangle {
             anchors.left: parent.left
             anchors.leftMargin: 243
             anchors.verticalCenter: parent.verticalCenter
-            model: []
+            textRole: "name"
+            model: policiesModel
             displayText: currentText
         }
     }
@@ -246,33 +247,65 @@ Rectangle {
 
 
     Button {
-          id: controls
-          x: 30
-          y: 383
-          text: qsTr("Button")
+        id: controls
+        x: 30
+        y: 383
+        text: qsTr("Button")
 
-          contentItem: Text {
-              color: "#060606"
-              font: control.font
-              opacity: enabled ? 1.0 : 0.3
-              text: "APLAY"
+        contentItem: Text {
+            color: "#060606"
+            font: inputcontrol.font
+            opacity: enabled ? 1.0 : 0.3
+            text: "APLAY"
 
 
 
-              renderType: Text.QtRendering
-              horizontalAlignment: Text.AlignHCenter
-              verticalAlignment: Text.AlignVCenter
-              elide: Text.ElideRight
-          }
+            renderType: Text.QtRendering
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            elide: Text.ElideRight
+        }
 
-          background: Rectangle {
-              implicitWidth: 100
-              implicitHeight: 40
-              opacity: enabled ? 1 : 0.3
-              border.color: control.down ? "#17a81a" : "#21be2b"
-              border.width: 1
-              radius: 2
-          }
+        background: Rectangle {
+            implicitWidth: 100
+            implicitHeight: 40
+            opacity: enabled ? 1 : 0.3
+            border.color: inputcontrol.down ? "#17a81a" : "#21be2b"
+            border.width: 1
+            radius: 2
+        }
+    }
+
+    Text {
+        id: routertLabel
+        x: 38
+        y: 150
+        color: "#0d0000"
+        text: qsTr("Router :")
+        anchors.leftMargin: 30
+        anchors.top: parent.top
+        font.capitalization: Font.SmallCaps
+        font.pixelSize: 16
+        anchors.topMargin: 31
+        horizontalAlignment: Text.AlignHCenter
+        anchors.left: parent.left
+        font.family: "Courier"
+    }
+
+      ComboBox {
+          id: comboBoxRouterId
+          x: 243
+          y: 151
+          width: 202
+          height: 34
+          textRole: "deviceId"
+          model: deviceModel
+          anchors.verticalCenter: matchInpytInterface.verticalCenter
+          font.pointSize: 10
+          displayText: currentText
+          focusPolicy: Qt.NoFocus
+          font.bold: true
+          anchors.verticalCenterOffset: -69
       }
 
 
@@ -371,8 +404,19 @@ Rectangle {
 
 
 
+
+
+
+
+
+
+
+
+
+
 /*##^## Designer {
     D{i:0;autoSize:true;height:480;width:640}D{i:3;anchors_x:200;anchors_y:156}D{i:2;anchors_x:200;anchors_y:156}
 D{i:7;anchors_x:30;anchors_y:147}D{i:17;anchors_x:30;anchors_y:150}D{i:18;anchors_x:243;anchors_y:156}
+D{i:23;anchors_x:200;anchors_y:156}
 }
  ##^##*/

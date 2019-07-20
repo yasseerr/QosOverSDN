@@ -42,7 +42,7 @@ Popup{
                 for(var i=0;i< matchPage.protocoles.count;i++){
                     protocolesList.push(matchPage.protocoles.get(i).protocole)
                 }
-                classesModel.addQosClass(classNamePage.qosClassName,classNamePage.theMatch,classNamePage.description,
+                classesModel.addQosClass(classNamePage.qosClassName,classNamePage.description,classNamePage.theMatch,
                                        protocolesList,matchPage.precedence,matchPage.dscp,
                                        matchFinPage.interfaceType,matchFinPage.index1,matchFinPage.index2,matchFinPage.destinationsMAC)
                 matchPage.protocoles.clear()

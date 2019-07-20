@@ -1,0 +1,9 @@
+devices:
+- id: 0
+  ipAddr: 13.0.0.1
+  neighbors: []
+  os: ios
+  password: projet2019
+  secret: projet2019
+  username: projet2019
+name: ourTopologie

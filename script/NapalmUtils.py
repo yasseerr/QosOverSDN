@@ -73,19 +73,19 @@ def send_config_file(f:str,device:Device):
     optional_args = {'secret': device.secret,
                      'inline_transfer':True}
 
-    dev = driver(device.hostname, device.username, device.password, optional_args=optional_args)
+    dev = driver(device.ipAddr, device.username, device.password, optional_args=optional_args)
     dev.open()
-    try:
-        dev.load_merge_candidate(f)
-        defferences = dev.compare_config()
-        if len(defferences)>0:
-            print(defferences)
-            dev.commit_config()
-        else:
-            dev.discard_config()
-    except:
-        print("Ther is a problem with send the configuration file")
-
+    #try:
+    dev.load_merge_candidate(f)
+    defferences = dev.compare_config()
+    if len(defferences)>0:
+        print(defferences)
+        dev.commit_config()
+    else:
+        dev.discard_config()
+    print(" the scrypte was send succsessfully")
+    # except:
+    #     print("Ther is a problem with send the configuration file")
     dev.close()
 
 

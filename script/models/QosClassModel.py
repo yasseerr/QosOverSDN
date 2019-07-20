@@ -129,4 +129,8 @@ class QosClassModel(QAbstractListModel):
             to_dump.append(qos_class.get_dict())
         f.write(yaml.dump(to_dump))
         f.close()
-        
+    
+    def getClassByName(self,name):
+        for clss in self.qosClasses:
+            if(clss.name == name): return clss
+        return None

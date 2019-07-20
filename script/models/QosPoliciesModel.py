@@ -120,3 +120,9 @@ class QosPoliciesModel(QAbstractListModel):
             to_dump.append(qos_policy.get_dict())
         f.write(yaml.dump(to_dump))
         f.close()
+
+    def getPolicyByName(self,name:QosPolicy):
+        for pol in self.qosPolicies:
+            if pol.name== name : return name
+        return None
+

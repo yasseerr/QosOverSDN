@@ -11,6 +11,8 @@ Item {
     property string mac_p: "Not Defined"
     property string color_p: "#336699"
 
+    property var applyClass: function(){}
+
     id: element
     x: 5
     height: 170
@@ -18,7 +20,7 @@ Item {
     Rectangle {
         id : backgroundRect
         anchors.fill: parent
-        color: color_p
+        color: classMA.containsMouse?Qt.lighter(color_p):color_p
         border.width: 1
         opacity: 0.8
         anchors.horizontalCenter: parent.horizontalCenter
@@ -70,5 +72,10 @@ Item {
             text: mac_p
         }
     }
-
+    MouseArea{
+        id : classMA
+        anchors.fill: parent
+        hoverEnabled: true
+        onClicked: applyClass()
+    }
 }

@@ -12,8 +12,12 @@ from script.DeviceItem import DeviceItem
 from script.TopoScene import TopoScene
 from script.models.QosClassManager import QosClassManager
 from script.models.QosClassModel import QosClassModel,QosClass
-from script.models.QosPoliciesModel import QosPoliciesModel
-from script.models.DevicesModel import DeviceModel
+from script.models.QosPoliciesModel import QosPoliciesModel,QosPolicy
+from script.models.DevicesModel import DeviceModel,Device
+
+
+from script.JinjaUtils import *
+from script.NapalmUtils import *
 
 import requests
 import json
@@ -130,7 +134,20 @@ class MainForm(QWidget):
         idI = int(idStr)
         device = self.topoScene.devices[idI].device
         print("autoQos")
-    
+
+    @pyqtSlot(int,str)
+    def applyClassificaionToRouter(self, deviceId,className):
+        device:Device = self.topoScene.devices[deviceId].device
+        qos_class: QosClass = self._classesModel.getClassByName(className) 
+        classification(qos_class)
+        send_config_file("classification.cfg",device)
+
+    @pyqtSlot(int,str)
+    def applyPolicyToRouter(self, deviceId,policyName):
+        device:Device = self.topoScene.devices[deviceId].device
+        qos_policy: QosPolicy = self._policiesModel.getPolicyByName(policyName)
+        policingJija()
+        send_config_file("classification.cfg",device)
     
 
 

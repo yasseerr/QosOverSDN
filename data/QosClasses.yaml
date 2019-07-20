@@ -86,3 +86,25 @@
   name: theClass
   precedence: IP
   protocoles: [h323]
+- color: '#336699'
+  description: match all
+  dscp: cs2
+  interfaceIndex1: 1
+  interfaceIndex2: 0
+  interfaceType: GigaEthernet
+  macAddr: 00:00:00:00:00:55
+  match: shiha
+  name: Shiha
+  precedence: critical
+  protocoles: [http, icmp]
+- color: '#336699'
+  description: desc
+  dscp: af11
+  interfaceIndex1: 0
+  interfaceIndex2: 0
+  interfaceType: GigabitEthernet
+  macAddr: ''
+  match: any
+  name: jdida
+  precedence: critical
+  protocoles: [gre, http]

@@ -129,7 +129,7 @@ Item {
             anchors.left: matchInpytInterface.right
             anchors.leftMargin: 32
             anchors.topMargin: -30
-            model: ["FastEthernet","GigaEthernet"]
+            model: ["FastEthernet","GigabitEthernet","Serial"]
             anchors.top: matchInpytInterface.bottom
 
             Rectangle {
@@ -220,6 +220,8 @@ Item {
 
     }
 }
+
+
 
 
 

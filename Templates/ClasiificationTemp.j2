@@ -4,7 +4,7 @@ class-map {{clasification.name}}
 {% if clasification.description != "" %}
  description {{clasification.description}}
  {% endif %}
- {% if clasification.match != "" %}
+ {% if clasification.match == "any" %}
  match {{clasification.match}}
 
 
@@ -24,7 +24,7 @@ class-map {{clasification.name}}
 
  {% if (clasification.interfaceType != "") and (clasification.interfaceIndex1 != "") and (clasification.interfaceIndex2 != "") %}
 
- match input-intrface {{clasification.interfaceType}}{{clasification.interfaceIndex1}}/{{clasification.interfaceIndex2}}
+ match input-interface {{clasification.interfaceType}}{{clasification.interfaceIndex1}}/{{clasification.interfaceIndex2}}
  {% endif%}
  {% if clasification.macAddr != "" %}
  match destination-address {{clasification.macAddr}}
