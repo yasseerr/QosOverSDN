@@ -1,5 +1,10 @@
 import QtQuick 2.2
 
+import QtQuick.Controls.Material 2.12
+import QtQuick.Controls 2.12
+import QtQuick.Controls.Styles 1.4
+import "./"
+
 Item {
     id: element
     visible:true
@@ -136,12 +141,56 @@ Item {
     }
 
 
+
+    Button {
+          id: controls
+          x: 150
+          y: 376
+          width: 81
+          height: 34
+          text: qsTr("Button")
+          anchors.verticalCenterOffset: 147
+          anchors.horizontalCenterOffset: 67
+          anchors.horizontalCenter: parent.horizontalCenter
+          anchors.verticalCenter: parent.verticalCenter
+          focusPolicy: Qt.NoFocus
+
+          contentItem: Text {
+              color: "#11100e"
+              font: control.font
+              opacity: enabled ? 1.0 : 0.3
+              text: "APLAY"
+              font.pointSize: 10
+              font.bold: true
+              font.family: "Courier"
+              fontSizeMode: Text.Fit
+
+
+
+              renderType: Text.QtRendering
+              horizontalAlignment: Text.AlignHCenter
+              verticalAlignment: Text.AlignVCenter
+              elide: Text.ElideRight
+          }
+
+          background: Rectangle {
+              color: "#bebe4f"
+              implicitWidth: 100
+              implicitHeight: 40
+              opacity: enabled ? 1 : 0.3
+              border.color: control.down ? "#17a81a" : "#21be2b"
+              border.width: 1
+              radius: 2
+          }
+      }
+
 }
+
+
 
 
 
 /*##^## Designer {
     D{i:0;autoSize:true;height:480;width:640}D{i:1;anchors_height:200;anchors_width:200;anchors_x:197;anchors_y:124}
-D{i:10;anchors_y:-8}
 }
  ##^##*/
