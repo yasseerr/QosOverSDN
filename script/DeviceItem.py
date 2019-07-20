@@ -33,7 +33,7 @@ class DeviceItem(QGraphicsItem):
         #painter.fillRect(self.boundingRect(),Qt.red)
         painter.drawImage(QPoint(0,10),self.deviceImages[self.deviceType])
         painter.setPen(self.namePen)
-        painter.drawText(QRectF(-25,0,150,20),Qt.AlignCenter,self.name)
+        painter.drawText(QRectF(-25,0,150,20),Qt.AlignCenter,str(self.device.id)+" > "+self.name)
 
 
     def mouseMoveEvent(self,event:QGraphicsSceneMouseEvent):

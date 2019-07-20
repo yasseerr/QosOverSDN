@@ -44,10 +44,13 @@ class QosClassModel(QAbstractListModel):
     QOS_INTERFACE = Qt.UserRole + 8
     QOS_MAC = Qt.UserRole + 9
 
-    def __init__(self,parent =None):
+    updateModelSig =  pyqtSignal()
+
+    def __init__(self,controleWidget,parent =None):
         super().__init__(parent)
         self.qosClasses = list()
         self.loadClasses()
+        self.controleWidget = controleWidget
     
     def data(self,index : QModelIndex,role:int):
         rowNum = index.row()
@@ -63,7 +66,10 @@ class QosClassModel(QAbstractListModel):
         elif(role == self.QOS_MATCH):
             return theQosClass.match
         elif(role == self.QOS_PROTOCOLES):
-            return theQosClass.protocoles
+            ret_str = ""
+            for protocole in theQosClass.protocoles:
+                ret_str += protocole + " "
+            return ret_str
         elif(role == self.QOS_PRECEDENCE):
             return theQosClass.precedence
         elif(role == self.QOS_DSCP):
@@ -112,6 +118,8 @@ class QosClassModel(QAbstractListModel):
         }
         newQosClass = QosClass(init_obj)
         self.qosClasses.append(newQosClass)
+        self.controleWidget.rootContext().setContextProperty('classesModel', self)
+        self.updateModelSig.emit()
         self.saveModel()
     
     def saveModel(self):

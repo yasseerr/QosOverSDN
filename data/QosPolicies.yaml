@@ -1,39 +1,14 @@
----
-- name : Policy1
-  color : '#FF9900'
-  classes :
-    - className : class1
-      bandwidh : 200
-    - className : class2
-      bandwidh : 200
-
-- name : Policy2
-  color : '#EAEBED'
-  classes :
-    - className : class1
-      bandwidh : 200
-    - className : class2
-      bandwidh : 200
-- name : Policy3
-  color : '#8E191E'
-  classes :
-    - className : class1
-      bandwidh : 200
-    - className : class2
-      bandwidh : 200
-
-- name : Policy4
-  color : '#2541B2'
-  classes :
-    - className : class1
-      bandwidh : 200
-    - className : class2
-      bandwidh : 200
-
-- name : Policy5
-  color : '#008000'
-  classes :
-    - className : class1
-      bandwidh : 200
-    - className : class2
-      bandwidh : 200
+- {bandwidthKb: 10, bandwidthPercent: 5, bandwidthRemaining: 4, className: finalTestClass,
+  description: desc, dscp: '', name: nameP, policyColor: '#336699', precedence: ''}
+- {bandwidthKb: 48, bandwidthPercent: 40, bandwidthRemaining: 50, className: zClass,
+  description: wa7edMaY3addi, dscp: '', name: IslemPolic, policyColor: '#336699',
+  precedence: ''}
+- {bandwidthKb: 20, bandwidthPercent: 0, bandwidthRemaining: 0, className: whatClass,
+  description: another, dscp: '', name: anotherTestPol, policyColor: '#336699', precedence: ''}
+- {bandwidthKb: 201, bandwidthPercent: 2, bandwidthRemaining: 3, className: whatClass,
+  description: descriptionnn, dscp: '', name: Pol55, policyColor: '#336699', precedence: ''}
+- {bandwidthKb: 8, bandwidthPercent: -1, bandwidthRemaining: -1, className: finalTestClass,
+  description: maybe, dscp: cs4, name: AllWorkingPolicy, policyColor: '#336699', precedence: priority}
+- {bandwidthKb: -1, bandwidthPercent: 20, bandwidthRemaining: -1, className: anoutherOne,
+  description: should work, dscp: cs4, name: finalPolicy, policyColor: '#336699',
+  precedence: internet}

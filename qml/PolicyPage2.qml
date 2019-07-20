@@ -8,9 +8,11 @@ Item{
 
     property var onNextClicked: function(){}
     property var onReturnClicked: function(){}
-    //property alias qosPolicyName: classNameTextEdit.text
-    property alias description: descriptionTextEdit.text
-    // property string theMatch: radioButtonAll.checked?"match-all":"match-any"
+    property int bandwidthKb: radioButtonKb.checked? spinBoxKb.value:-1
+    property int bandwidthPersent: radioButtonPersent.checked?spinBoxPercent.value:-1
+    property int bandwidthRemaining: radioButtonRemaining.checked?spinBoxRemaining.value:-1
+    property alias className: comboBoxClassName.currentText
+
 
     id : root
     width: 640
@@ -44,12 +46,13 @@ Item{
             font.pixelSize: 16
 
             ComboBox {
-                id: comboBox
+                id: comboBoxClassName
                 x: 176
                 y: -5
                 width: 200
                 height: 30
-                model: ["name Of Class"]
+                model: classesModel
+                textRole: "name"
             }
         }
 
@@ -118,13 +121,13 @@ Item{
             height: 266
 
             RadioButton {
-                id: radioButton1
+                id: radioButtonKb
                 x: 7
                 y: 21
                 text: qsTr("Radio Button")
 
                 SpinBox {
-                    id: spinBox2
+                    id: spinBoxKb
                     height: 30
                     editable: true
                     anchors.verticalCenterOffset: 0
@@ -186,7 +189,7 @@ Item{
             }
 
             RadioButton {
-                id: radioButton2
+                id: radioButtonPersent
                 x: 7
                 y: 102
                 text: qsTr("Radio Button")
@@ -224,7 +227,7 @@ Item{
                     }
 
                     SpinBox {
-                        id: spinBox1
+                        id: spinBoxPercent
                         width: 130
                         height: 30
                         editable: true
@@ -242,7 +245,7 @@ Item{
             }
 
             RadioButton {
-                id: radioButton3
+                id: radioButtonRemaining
                 x: 7
                 y: 183
                 text: qsTr("Radio Button")
@@ -282,7 +285,7 @@ Item{
                 }
 
                 SpinBox {
-                    id: spinBox
+                    id: spinBoxRemaining
                     x: 304
                     y: -4
                     height: 30
@@ -294,9 +297,12 @@ Item{
             }
         }
 
+
     }
 
 }
+
+
 
 
 

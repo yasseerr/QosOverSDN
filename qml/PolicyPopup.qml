@@ -26,22 +26,28 @@ Popup{
             }
         }
        PolicyPage2{
-       id:policyNamePage2
-       onReturnClicked: function(){
-       swipeView.setCurrentIndex(0)
-       }
-       onNextClicked: function(){
-       swipeView.setCurrentIndex(2)
-       }
+           id:policyNamePage2
+           onReturnClicked: function(){
+                swipeView.setCurrentIndex(0)
+           }
+           onNextClicked: function(){
+              swipeView.setCurrentIndex(2)
+           }
        }
        Policypage3{
-       id:policyNamePage3
-       onReturnClicked: function(){
-       swipeView.setCurrentIndex(1)
-       }
+           id:policyNamePage3
+           onReturnClicked: function(){
+                swipeView.setCurrentIndex(1)
+           }
+           onFinishClicked: function(){
+                policiesModel.addQosPolicy( policyNamePage1.name,policyNamePage1.description,
+                                           policyNamePage2.className,policyNamePage2.bandwidthKb,policyNamePage2.bandwidthPersent,policyNamePage2.bandwidthRemaining,policyNamePage3.precedence,policyNamePage3.dscp
+                                           )
+               root.close()
+           }
        }
 
-        }
+    }
 
 
     PageIndicator {

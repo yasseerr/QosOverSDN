@@ -6,9 +6,10 @@ import QtQuick.Layouts 1.3
 
 Item{
 
+    property alias name: textInputpolicyName.text
     property var onNextClicked: function(){}
     //property alias qosPolicyName: classNameTextEdit.text
-    property alias description: descriptionTextEdit.text
+    property alias description: textInputDescription.text
     // property string theMatch: radioButtonAll.checked?"match-all":"match-any"
 
     id : root
@@ -89,15 +90,16 @@ Item{
         }
 
         TextInput {
-            id: textInput
+            id: textInputDescription
             x: 190
             y: 210
             width: 187
             height: 33
             color: "#ffffff"
+            horizontalAlignment: Text.AlignHCenter
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: descriptionTextEdit.verticalCenter
-            font.pixelSize: 12
+            font.pixelSize: 20
 
             Rectangle {
                 id: rectangle2
@@ -107,23 +109,25 @@ Item{
                 height: 2
                 color: "#ffffff"
                 anchors.leftMargin: 0
-                anchors.topMargin: 40
+                anchors.topMargin: 30
                 anchors.top: parent.top
                 anchors.left: parent.left
             }
         }
 
         TextInput {
-            id: textInput1
+            id: textInputpolicyName
             x: 210
             y: 210
             width: 188
             height: 30
             color: "#ffffff"
+            text: ""
+            horizontalAlignment: Text.AlignHCenter
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenterOffset: 0
             anchors.verticalCenter: policyNamelabel.verticalCenter
-            font.pixelSize: 12
+            font.pixelSize: 20
             Rectangle {
                 id: rectangle3
                 x: 10
@@ -132,7 +136,7 @@ Item{
                 height: 2
                 color: "#ffffff"
                 anchors.leftMargin: 0
-                anchors.topMargin: 40
+                anchors.topMargin: 30
                 anchors.top: parent.top
                 anchors.left: parent.left
             }
@@ -140,6 +144,10 @@ Item{
 
     }
 }
+
+
+
+
 
 
 
