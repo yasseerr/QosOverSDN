@@ -50,11 +50,12 @@ class TopoDialog(QDialog):
                     deviceI.links.append(newLink)
                     newDeviceItem.links.append(newLink)
                     self.topologieScene.addItem(newLink)
-                    self.controleWidget.rootContext().setContextProperty('deviceModel', self.deviceModel)
+                    self.ui.controleWidget.rootContext().setContextProperty('deviceModel', self._deviceModel)
                     self.topologieScene.links.append(newLink)
                 self.topologieScene.buildGraph()
                 self.topologieScene.saveTopologie()
                 self.deviceModel.devicesList.append(newDevice)
+                con
                 self.connectRespenseSig.emit(1)
         except Exception  :
             print(" error connecting to router  ")

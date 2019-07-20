@@ -13,6 +13,7 @@ from script.TopoScene import TopoScene
 from script.models.QosClassManager import QosClassManager
 from script.models.QosClassModel import QosClassModel,QosClass
 from script.models.QosPoliciesModel import QosPoliciesModel
+from script.models.DevicesModel import DeviceModel
 
 import requests
 import json
@@ -93,7 +94,9 @@ class MainForm(QWidget):
     def drawTopologie(self,topoFile):
         self.topoScene = TopoScene("data/topologies/"+topoFile)
         self.ui.topologieView.setScene(self.topoScene)
-        self.topologyDialog = TopoDialog(self.topoScene)
+        self._deviceModel = DeviceModel(self.topoScene)
+        self.ui.controleWidget.rootContext().setContextProperty('deviceModel', self._deviceModel)
+        self.topologyDialog = TopoDialog(self.topoScene,self._deviceModel,self.ui.controleWidget)
         self.topologyDialog.topologieScene = self.topoScene
         self.displayTopologie()
 
@@ -121,6 +124,12 @@ class MainForm(QWidget):
     def deleteTopologie(self, filename):
         fileP = "data/topologies/"+filename
         os.remove(fileP)
+
+    @pyqtSlot(str)
+    def applyAutoQos(self, idStr):
+        idI = int(idStr)
+        device = self.topoScene.devices[idI].device
+        print("autoQos")
     
     
 

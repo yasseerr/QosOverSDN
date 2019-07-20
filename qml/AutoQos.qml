@@ -7,15 +7,7 @@ import "./"
 Rectangle {
     id: rootRectangle
     color: "#f5f5f5"
-
     border.color: "#95989a"
-
-
-
-
-
-
-
     Item {
         id: autoQos
         height: 200
@@ -35,17 +27,20 @@ Rectangle {
             icon.name :"AddClassIcon"
             icon.source: "../assets/Yes.png"
             icon.color :"transparent"
-            text: "APLAY AutoQos"
+            text: "APLY AutoQos"
             anchors.left: parent.left
             anchors.leftMargin: 34
-            anchors.top: interfaces.bottom
+            //anchors.top: interfaces.bottom
             anchors.topMargin: 30
             font.pointSize: 8
             background: Rectangle {
                 anchors.fill: parent
                 color:activeAutoQosButton.hovered?"#ddd":"#fff"
             }
-            onClicked: addClassPupup.open()
+            onClicked: {
+                mainForm.applyAutoQos(comboBoxRouter.currentText,comboBoxInterface.currentText,
+                                      tumbler1.currentIndex,tumbler2.currentIndex)
+            }
         }
 
         Button {
@@ -70,14 +65,14 @@ Rectangle {
         }
 
         ComboBox {
-            id: osComboBoxInterface
+            id: comboBoxInterface
             width: 202
             height: 40
             anchors.left: parent.left
             anchors.leftMargin: 208
             anchors.top: parent.top
             anchors.topMargin: -57
-            model: ["FastEthernet","GigaEthernet"]
+            model: ["FastEthernet","GigaEthernet","Serial"]
             font.bold: true
             focusPolicy: Qt.NoFocus
             font.pointSize: 10
@@ -86,8 +81,9 @@ Rectangle {
                 id: rectangle
                 y: 9
                 width: 96
-                height: 40
+                height: 56
                 color: "#ffffff"
+                radius: 5
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.verticalCenterOffset: 0
@@ -95,7 +91,7 @@ Rectangle {
             }
 
             Tumbler {
-                id: tumbler1
+                id: tumbler2
                 x: 632
                 y: 50
                 width: 60
@@ -113,7 +109,7 @@ Rectangle {
             }
 
             Tumbler {
-                id: tumbler2
+                id: tumbler1
                 x: 145
                 y: -38
                 width: 47
@@ -136,20 +132,21 @@ Rectangle {
                 height: 18
                 color: "#000000"
                 anchors.verticalCenter: parent.verticalCenter
-                anchors.right: tumbler1.left
-                anchors.horizontalCenter: tumbler1.horizontalCenter
+                anchors.right: tumbler2.left
+                anchors.horizontalCenter: tumbler2.horizontalCenter
                 anchors.horizontalCenterOffset: -30
                 anchors.rightMargin: -1
             }
         }
 
         ComboBox {
-            id: osComboBoxInterface1
+            id: comboBoxRouter
             x: 6
             y: -1
             width: 202
             height: 40
-            model: []
+            textRole: "deviceId"
+            model: deviceModel
             anchors.left: parent.left
             font.bold: true
             font.pointSize: 10
@@ -197,6 +194,12 @@ Rectangle {
 
 
 }
+
+
+
+
+
+
 
 
 
