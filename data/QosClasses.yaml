@@ -8,4 +8,28 @@
   match: description
   name: firstClass
   precedence: IP
-  protocoles: [icmp, rip]
+  protocoles:
+  - icmp
+  - rip
+- color: '#336699'
+  description: match-all
+  dscp: af11
+  interfaceIndex1: 0
+  interfaceIndex2: 0
+  interfaceType: FastEthernet
+  macAddr: ''
+  match: ''
+  name: ''
+  precedence: IP
+  protocoles: []
+- color: '#336699'
+  description: match-all
+  dscp: af11
+  interfaceIndex1: 0
+  interfaceIndex2: 0
+  interfaceType: FastEthernet
+  macAddr: ''
+  match: ''
+  name: ''
+  precedence: IP
+  protocoles: []
