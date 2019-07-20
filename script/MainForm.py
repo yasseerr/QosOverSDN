@@ -40,7 +40,7 @@ class MainForm(QWidget):
         self.setWindowTitle("QosOnSdn")
 
         self._classesManager = QosClassManager()
-        self._classesModel = QosClassModel(self)
+        self._classesModel = QosClassModel(self.ui.controleWidget, self)
         self._policiesModel = QosPoliciesModel(self)
         self.ui.menuWidget.rootContext().setContextProperty('mainForm',self)
         self.ui.topologieView.setRenderHint(QPainter.Antialiasing)

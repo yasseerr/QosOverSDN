@@ -123,6 +123,15 @@ Rectangle {
             classModel.append({"name":name_p,"colorCode":color_p})
         }
     }
+    Connections{
+        target: classesModel
+        onUpdateModelSig:{
+            gridView.model = 0
+            gridView.update()
+            gridView.model = classesModel
+            gridView.update()
+        }
+    }
 
 }
 
