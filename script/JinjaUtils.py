@@ -2,6 +2,7 @@ from jinja2 import Environment, FileSystemLoader
 from script.NapalmUtils import send_config_file
 from script.Device import Device
 from script.models.QosClassModel import QosClass
+from script.models.QosPoliciesModel import QosPolicy
 def autoQosJija(interface_name,NB1,NB2):
     file_loader = FileSystemLoader('Templates')
 
@@ -59,19 +60,19 @@ classification(qos)
 #print(Classification("nameclass","disc","any",["a","ad","v","v"],5,"af11"))
 
 
-def policingJija(Name,description,Class_Map_Name,BandwithKPS,bandwidthPercent,bandwidthRemaining,ipprecedence,ipdscp):
+def policingJija(QosP : QosPolicy):
     file_loader = FileSystemLoader('Templates')
     env = Environment(loader=file_loader)
     # TODO lien nta3 AutoQosTempl
     template = env.get_template('policyTemp.j2')
 
-    policing_dict = {"Name":Name, "description": description, "Class_Map_Name" : Class_Map_Name,
-                    "BandwithKPS":BandwithKPS,
-                    "bandwidthPercent":bandwidthPercent,
-                    "bandwidthRemaining":bandwidthRemaining,
-                     "ipprecedence" : ipprecedence,
-                     "ipdscp" : ipdscp
-                    }
+    # policing_dict = {"Name":Name, "description": description, "Class_Map_Name" : Class_Map_Name,
+    #                 "BandwithKPS":BandwithKPS,
+    #                 "bandwidthPercent":bandwidthPercent,
+    #                 "bandwidthRemaining":bandwidthRemaining,
+    #                  "ipprecedence" : ipprecedence,
+    #                  "ipdscp" : ipdscp
+    #                 }
     output = template.render(policing=policing_dict)
     f = open("policing.cfg", 'w')
     f.write(output)

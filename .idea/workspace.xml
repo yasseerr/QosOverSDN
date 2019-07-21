@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6e8ba465-48a0-4040-9895-87fe91b201bf" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/qml/intro.qml" afterPath="$PROJECT_DIR$/qml/intro.qml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/JinjaUtils.py" afterPath="$PROJECT_DIR$/script/JinjaUtils.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,42 +34,28 @@
       <file leaf-file-name="QosClassModel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/models/QosClassModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="28" column="51" lean-forward="false" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="51" />
-              <folding>
-                <marker date="1563658682771" expanded="true" signature="1307:4407" ph="..." />
-                <marker date="1563658682771" expanded="true" signature="4140:4166" ph="..." />
-                <marker date="1563658682771" expanded="true" signature="4196:4407" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClasiificationTemp.j2" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Templates/ClasiificationTemp.j2">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="442">
+              <caret line="35" column="40" lean-forward="true" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SercicePolicyTemp.j2" pinned="false" current-in-tab="true">
+      <file leaf-file-name="QosPoliciesModel.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/models/QosPoliciesModel.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SercicePolicyTemp.j2" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Templates/SercicePolicyTemp.j2">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="1" column="78" lean-forward="true" selection-start-line="1" selection-start-column="78" selection-end-line="1" selection-end-column="78" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="policyTemp.j2" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Templates/policyTemp.j2">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+              <caret line="1" column="78" lean-forward="false" selection-start-line="1" selection-start-column="78" selection-end-line="1" selection-end-column="78" />
               <folding />
             </state>
           </provider>
@@ -100,8 +86,8 @@
       <file leaf-file-name="JinjaUtils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/JinjaUtils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="50" column="32" lean-forward="true" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
+            <state relative-caret-position="68">
+              <caret line="72" column="19" lean-forward="false" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -114,6 +100,26 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="254">
               <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClasiificationTemp.j2" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Templates/ClasiificationTemp.j2">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="29" lean-forward="false" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="policyTemp.j2" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Templates/policyTemp.j2">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="11" lean-forward="true" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -144,12 +150,12 @@
         <option value="$PROJECT_DIR$/script/NapalmUtils.py" />
         <option value="$PROJECT_DIR$/Templates/JijaFile.py" />
         <option value="$PROJECT_DIR$/Templates/SercicePolicyTemp.j2" />
-        <option value="$PROJECT_DIR$/script/models/QosClassModel.py" />
         <option value="$PROJECT_DIR$/script/temp.cfg" />
-        <option value="$PROJECT_DIR$/Templates/ClasiificationTemp.j2" />
-        <option value="$PROJECT_DIR$/Templates/policyTemp.j2" />
         <option value="$PROJECT_DIR$/Templates/AutoQosTemp.j2" />
+        <option value="$PROJECT_DIR$/Templates/ClasiificationTemp.j2" />
+        <option value="$PROJECT_DIR$/script/models/QosClassModel.py" />
         <option value="$PROJECT_DIR$/script/JinjaUtils.py" />
+        <option value="$PROJECT_DIR$/Templates/policyTemp.j2" />
       </list>
     </option>
   </component>
@@ -192,6 +198,12 @@
               <item name="Root" type="cbb8eebc:String" user="Root" />
               <item name="QosOverSDN" type="cbb8eebc:String" user="QosOverSDN" />
               <item name="script" type="cbb8eebc:String" user="script" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="QosOverSDN" type="cbb8eebc:String" user="QosOverSDN" />
+              <item name="script" type="cbb8eebc:String" user="script" />
+              <item name="models" type="cbb8eebc:String" user="models" />
             </path>
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
@@ -581,7 +593,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -607,7 +619,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/script/MainForm.py</url>
-          <line>127</line>
+          <line>153</line>
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="1" />
@@ -675,7 +687,7 @@
         <state relative-caret-position="1360">
           <caret line="97" column="58" lean-forward="true" selection-start-line="97" selection-start-column="58" selection-end-line="97" selection-end-column="58" />
           <folding>
-            <marker date="1563658682765" expanded="true" signature="4051:5396" ph="..." />
+            <marker date="1563666548681" expanded="true" signature="5196:6541" ph="..." />
           </folding>
         </state>
       </provider>
@@ -775,13 +787,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-510">
           <caret line="7" column="6" lean-forward="true" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/models/QosPoliciesModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -895,7 +900,7 @@
         <state relative-caret-position="1156">
           <caret line="87" column="47" lean-forward="false" selection-start-line="87" selection-start-column="47" selection-end-line="87" selection-end-column="47" />
           <folding>
-            <marker date="1563658682765" expanded="true" signature="4051:5396" ph="..." />
+            <marker date="1563666548681" expanded="true" signature="5196:6541" ph="..." />
           </folding>
         </state>
       </provider>
@@ -916,18 +921,6 @@
         <state relative-caret-position="17">
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/models/QosClassModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="28" column="51" lean-forward="false" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="51" />
-          <folding>
-            <marker date="1563658682771" expanded="true" signature="1307:4407" ph="..." />
-            <marker date="1563658682771" expanded="true" signature="4140:4166" ph="..." />
-            <marker date="1563658682771" expanded="true" signature="4196:4407" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -957,14 +950,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Templates/policyTemp.j2">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Templates/AutoQosTemp.j2">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -973,10 +958,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/script/models/QosClassModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="35" column="40" lean-forward="true" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/script/JinjaUtils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="50" column="32" lean-forward="true" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
+        <state relative-caret-position="68">
+          <caret line="72" column="19" lean-forward="false" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>
@@ -985,8 +978,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Templates/ClasiificationTemp.j2">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="119">
+          <caret line="7" column="29" lean-forward="false" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -994,7 +987,23 @@
     <entry file="file://$PROJECT_DIR$/Templates/SercicePolicyTemp.j2">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" column="78" lean-forward="true" selection-start-line="1" selection-start-column="78" selection-end-line="1" selection-end-column="78" />
+          <caret line="1" column="78" lean-forward="false" selection-start-line="1" selection-start-column="78" selection-end-line="1" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/models/QosPoliciesModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Templates/policyTemp.j2">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="11" lean-forward="true" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
           <folding />
         </state>
       </provider>
