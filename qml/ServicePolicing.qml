@@ -33,7 +33,7 @@ Rectangle {
     }
 
     ComboBox {
-        id: osComboBoxInterface
+        id: comboBoxInterface
         x: 243
         y: 156
         width: 202
@@ -43,14 +43,15 @@ Rectangle {
         focusPolicy: Qt.NoFocus
         anchors.verticalCenterOffset: 0
         anchors.verticalCenter: matchInpytInterface.verticalCenter
-        model: ["FastEthernet","GigaEthernet","Serial"]
+        model: ["FastEthernet","GigabitEthernet","Serial"]
         displayText: currentText
         Rectangle {
             id: rectangle
             y: 9
-            width: 96
-            height: 40
+            width: 102
+            height: 70
             color: "#ffffff"
+            radius: 4
             anchors.left: parent.left
             anchors.leftMargin: 204
             anchors.verticalCenterOffset: 0
@@ -58,7 +59,7 @@ Rectangle {
         }
 
         Tumbler {
-            id: tumbler1
+            id: tumbler2
             x: 632
             y: 50
             width: 60
@@ -76,7 +77,7 @@ Rectangle {
         }
 
         Tumbler {
-            id: tumbler2
+            id: tumbler1
             x: 145
             y: -38
             width: 47
@@ -98,10 +99,10 @@ Rectangle {
             width: 0
             height: 18
             color: "#000000"
-            anchors.right: tumbler1.left
+            anchors.right: tumbler2.left
             anchors.rightMargin: -1
             anchors.verticalCenter: parent.verticalCenter
-            anchors.horizontalCenter: tumbler1.horizontalCenter
+            anchors.horizontalCenter: tumbler2.horizontalCenter
             anchors.horizontalCenterOffset: -30
         }
     }
@@ -229,7 +230,7 @@ Rectangle {
         }
 
         ComboBox {
-            id: osComboBoxInterface1
+            id: comboBoxPolicy
             y: 156
             width: 202
             height: 40
@@ -251,6 +252,9 @@ Rectangle {
         x: 30
         y: 383
         text: qsTr("Button")
+        onClicked:  mainForm.applyServicePolicingToRouter(parseInt(comboBoxRouterId.currentText),comboBoxInterface.currentText,
+                                                         tumbler1.currentIndex,tumbler2.currentIndex,
+                                                          outpucontrol.checked?"output":"input",comboBoxPolicy.currentText)
 
         contentItem: Text {
             color: "#060606"
@@ -311,6 +315,12 @@ Rectangle {
 
 
 }
+
+
+
+
+
+
 
 
 

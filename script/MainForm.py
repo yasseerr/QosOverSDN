@@ -146,8 +146,14 @@ class MainForm(QWidget):
     def applyPolicyToRouter(self, deviceId,policyName):
         device:Device = self.topoScene.devices[deviceId].device
         qos_policy: QosPolicy = self._policiesModel.getPolicyByName(policyName)
-        #policingJija()
+        policingJija(qos_policy)
         send_config_file("policing.cfg",device)
+
+    @pyqtSlot(int,str,int,int,str,str)
+    def applyServicePolicingToRouter(self, deviceId, interfaceType, itrIndex1, itrIndex2, orientation, policyName):
+        device:Device = self.topoScene.devices[deviceId].device
+        servicePolicyJija(interfaceType,itrIndex1,itrIndex2,orientation,policyName)
+        send_config_file("servicePolicing.cfg", device)
     
 
 

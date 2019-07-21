@@ -60,7 +60,7 @@ classification(qos)
 #print(Classification("nameclass","disc","any",["a","ad","v","v"],5,"af11"))
 
 
-def policingJija(QosP : QosPolicy):
+def policingJija(qosP : QosPolicy):
     file_loader = FileSystemLoader('Templates')
     env = Environment(loader=file_loader)
     # TODO lien nta3 AutoQosTempl
@@ -73,7 +73,7 @@ def policingJija(QosP : QosPolicy):
     #                  "ipprecedence" : ipprecedence,
     #                  "ipdscp" : ipdscp
     #                 }
-    output = template.render(policing=policing_dict)
+    output = template.render(policing=qosP.get_dict())
     f = open("policing.cfg", 'w')
     f.write(output)
     f.close()
@@ -90,8 +90,10 @@ def servicePolicyJija(interface_name,n1,n2,inout_put,nameOfpolicy):
     template = env.get_template('SercicePolicyTemp.j2')
 
     servicePolicing_dict = {"interface_name" : interface_name, "n1" : n1, "n2" : n2 ,"inout_put" : inout_put,
-                            "   nameOfpolicy" : nameOfpolicy}
+                            "nameOfpolicy" : nameOfpolicy}
     output = template.render(servicePolicing = servicePolicing_dict)
-    return output
+    f = open("servicePolicing.cfg", 'w')
+    f.write(output)
+    f.close()
 
 #print(servicePolicyJija("g",2,3,"input","r"))

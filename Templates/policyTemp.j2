@@ -6,18 +6,19 @@ description {{policing.description}}
 {% if policing.classname!= "" %}
 class {{policing.className}}
 
-{% if policing.bandwithKb != "-1" %}
-bandwidth {{policing.bandwithKb}}
+{% if policing.bandwidthKb != -1 %}
+bandwidth {{policing.bandwidthKb}}
 {% endif %}
-{% if policing.bandwidthPercent != "-1" %}
+{% if policing.bandwidthPercent != -1 %}
 bandwidth percent {{policing.bandwidthPercent}}
 {% endif %}
-{% if policing.bandwidthRemaining != "-1" %}
+{% if policing.bandwidthRemaining != -1 %}
 bandwidth remaining {{policing.bandwidthRemaining}}
 {% endif %}
-{% if policing.precedence %}
+{% if policing.precedence != "" %}
 set ip precedence {{policing.precedence}}
 {% endif %}
 {% if policing.dscp != "" %}
 set ip dscp {{policing.dscp}}
+{% endif %}
 {% endif %}

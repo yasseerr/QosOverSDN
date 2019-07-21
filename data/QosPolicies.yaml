@@ -12,3 +12,5 @@
 - {bandwidthKb: -1, bandwidthPercent: 20, bandwidthRemaining: -1, className: anoutherOne,
   description: should work, dscp: cs4, name: finalPolicy, policyColor: '#336699',
   precedence: internet}
+- {bandwidthKb: 20, bandwidthPercent: -1, bandwidthRemaining: -1, className: jdida,
+  description: waaah, dscp: cs1, name: jdidaPolicy, policyColor: '#336699', precedence: network}

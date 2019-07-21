@@ -123,6 +123,6 @@ class QosPoliciesModel(QAbstractListModel):
 
     def getPolicyByName(self,name:QosPolicy):
         for pol in self.qosPolicies:
-            if pol.name== name : return name
+            if pol.name== name : return pol
         return None
 
