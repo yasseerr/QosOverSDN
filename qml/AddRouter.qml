@@ -239,7 +239,7 @@ Item {
     }
     LoadingPopup{
         id:pingingPopup
-        onAboutToShow: {
+        onAboutToShow: {   
             dialogRef.onAddRouterClicked(adressInput.text,usernameInput.text,passwordInput.text,
                                          secretInput.text,osComboBox.currentText)
         }

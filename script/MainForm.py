@@ -129,11 +129,11 @@ class MainForm(QWidget):
         fileP = "data/topologies/"+filename
         os.remove(fileP)
 
-    @pyqtSlot(str)
-    def applyAutoQos(self, idStr):
-        idI = int(idStr)
-        device = self.topoScene.devices[idI].device
-        print("autoQos")
+    @pyqtSlot(int,str,int,int)
+    def applyAutoQos(self, deviceId,interfaceType,index1,index2):
+        device: Device = self.topoScene.devices[deviceId].device
+        autoQosJinja(interfaceType,index1,index2)
+        send_config_file("autoqos.cfg", device)
 
     @pyqtSlot(int,str)
     def applyClassificaionToRouter(self, deviceId,className):

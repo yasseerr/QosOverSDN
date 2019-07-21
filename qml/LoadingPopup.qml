@@ -47,9 +47,17 @@ Popup{
         duration: 400
         onFinished: pingingPopup.close()
     }
+    WorkerScript{
+        id: showBuzzyWorker
+
+        onMessage: busyIndicator.running?busyIndicator.running=false:busyIndicator.running=true
+    }
     function waitingEnded(ret){
         returnColorAnimation.thecolor = ret==1?"#00ff00":"#ff0000"
         returnColorAnimation.start();
     }
 
+    function toggle(){
+        showBuzzyWorker.sendMessage({})
+    }
 }

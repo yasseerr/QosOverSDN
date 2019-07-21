@@ -155,17 +155,15 @@ Item {
           anchors.verticalCenter: parent.verticalCenter
           focusPolicy: Qt.NoFocus
 
+          onClicked: dbView.logIn(usernameInput.text,passwordInput.text)
+
           contentItem: Text {
               color: "#11100e"
               font: control.font
               opacity: enabled ? 1.0 : 0.3
               text: "APLAY"
-              font.pointSize: 10
-              font.bold: true
-              font.family: "Courier"
-              fontSizeMode: Text.Fit
-
-
+              //font.pointSize: 10
+              //font.bold: true
 
               renderType: Text.QtRendering
               horizontalAlignment: Text.AlignHCenter
@@ -183,6 +181,29 @@ Item {
               radius: 2
           }
       }
+    Label {
+        id: errorlabel
+        x: 243
+        width: 149
+        height: 18
+        color: "#db0909"
+        text: qsTr("Wrong Username/Password")
+        visible: false
+        anchors.top: passwordInput.bottom
+        anchors.topMargin: 20
+        font.pointSize: 10
+        anchors.horizontalCenter: parent.horizontalCenter
+    }
+
+      Connections{
+           target: dbView
+           onLogSig: {
+                if(ret==1)   console.log("connected")
+               else if(ret == 0) errorlabel.visible = true
+
+           }
+
+      }
 
 }
 
@@ -190,7 +211,20 @@ Item {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /*##^## Designer {
     D{i:0;autoSize:true;height:480;width:640}D{i:1;anchors_height:200;anchors_width:200;anchors_x:197;anchors_y:124}
+D{i:15;anchors_y:333}
 }
  ##^##*/

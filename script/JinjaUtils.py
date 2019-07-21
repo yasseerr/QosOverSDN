@@ -3,7 +3,7 @@ from script.NapalmUtils import send_config_file
 from script.Device import Device
 from script.models.QosClassModel import QosClass
 from script.models.QosPoliciesModel import QosPolicy
-def autoQosJija(interface_name,NB1,NB2):
+def autoQosJinja(interface_name,NB1,NB2):
     file_loader = FileSystemLoader('Templates')
 
     env = Environment(loader=file_loader)
@@ -11,7 +11,7 @@ def autoQosJija(interface_name,NB1,NB2):
     template = env.get_template('AutoQosTemp.j2')
 
     AutoQos_dict = {"interface_name": interface_name, "NB1": NB1, "NB2": NB2}
-    output = template.render(interface = AutoQos_dict)
+    output = template.render(interface=AutoQos_dict)
 
     f = open("autoqos.cfg",'w')
     f.write(output)

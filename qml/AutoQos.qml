@@ -38,7 +38,7 @@ Rectangle {
                 color:activeAutoQosButton.hovered?"#ddd":"#fff"
             }
             onClicked: {
-                mainForm.applyAutoQos(comboBoxRouter.currentText,comboBoxInterface.currentText,
+                mainForm.applyAutoQos(parseInt(comboBoxRouter.currentText),comboBoxInterface.currentText,
                                       tumbler1.currentIndex,tumbler2.currentIndex)
             }
         }
@@ -72,7 +72,7 @@ Rectangle {
             anchors.leftMargin: 208
             anchors.top: parent.top
             anchors.topMargin: -57
-            model: ["FastEthernet","GigaEthernet","Serial"]
+            model: ["FastEthernet","GigabitEthernet","Serial"]
             font.bold: true
             focusPolicy: Qt.NoFocus
             font.pointSize: 10

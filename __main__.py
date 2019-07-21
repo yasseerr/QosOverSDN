@@ -7,10 +7,11 @@ from PyQt5.QtQuick import QQuickView
 from PyQt5.QtGui import QGuiApplication,QIcon
 
 from script.MainForm import MainForm
-
+from script.DBView import DBView
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon("assets/appIcon.png"))
     w = MainForm()
-    w.showMaximized()
+    dbV = DBView(w)
+    dbV.showMaximized()
     app.exec()

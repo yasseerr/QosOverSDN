@@ -59,7 +59,7 @@ def delete_user(name:str):
 
 def log_in(name:str,password:str):
     T = True
-    conn = sqlite3.connect("QosUsers")
+    conn = sqlite3.connect("database/QosUsers")
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM users where username = ? and password = ?",(name,password))
     data = cursor.fetchall()
