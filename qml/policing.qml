@@ -104,12 +104,29 @@ Rectangle {
                 bandwidthRemaining_p: bandwidthRemaining
                 precedence_p: precedence
                 dscp_p: dscp
+                applyPolicyFunc: function(){
+                    applyToRouter.open()
+                    applyToRouter.anchors.centerIn = rootRectangle
+                    applyToRouter.policyName = name_p
+                }
             }
             cellHeight: 180
             cellWidth: 180
         }
 
     }
+
+    SelectRouterPopup{
+        property string policyName: ""
+        id:applyToRouter
+        visible: false
+
+        applyToRouterFunc: function(){
+            mainForm.applyPolicyToRouter(deviceId,policyName)
+        }
+
+    }
+
     Connections{
         target: policiesModel
         onUpdateModelSig:{

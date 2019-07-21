@@ -13,7 +13,7 @@ Item {
     property string color_p: "#336699"
 
 
-    property var applyPolicy: function(){}
+    property var applyPolicyFunc: function(){}
 
     id: element
     x: 5
@@ -94,7 +94,7 @@ Item {
         id: policyMA
         anchors.fill: parent
         hoverEnabled: true
-        onClicked: applyPolicy()
+        onClicked: applyPolicyFunc()
     }
 
 }
