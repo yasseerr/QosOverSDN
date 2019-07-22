@@ -8,9 +8,16 @@ devices:
   username: projet2019
 - id: 1
   ipAddr: 12.0.0.1
-  neighbors: [0]
+  neighbors: [0, 2]
   os: ios
   password: p19
   secret: p19
   username: p19
-name: ourTopologie
+- id: 2
+  ipAddr: 10.0.0.2
+  neighbors: [1]
+  os: ios
+  password: p19
+  secret: p19
+  username: p19
+name: anotherTopo

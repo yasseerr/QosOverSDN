@@ -108,3 +108,14 @@
   name: jdida
   precedence: critical
   protocoles: [gre, http]
+- color: '#336699'
+  description: desc
+  dscp: cs1
+  interfaceIndex1: 1
+  interfaceIndex2: 0
+  interfaceType: GigabitEthernet
+  macAddr: 00:00:00:00:00:11
+  match: any
+  name: newClass
+  precedence: critical
+  protocoles: [arp, h323, ip]

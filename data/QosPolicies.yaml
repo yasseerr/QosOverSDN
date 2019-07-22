@@ -14,3 +14,5 @@
   precedence: internet}
 - {bandwidthKb: 20, bandwidthPercent: -1, bandwidthRemaining: -1, className: jdida,
   description: waaah, dscp: cs1, name: jdidaPolicy, policyColor: '#336699', precedence: network}
+- {bandwidthKb: 50, bandwidthPercent: -1, bandwidthRemaining: -1, className: jdida,
+  description: des, dscp: cs4, name: nameNew, policyColor: '#336699', precedence: network}
